@@ -16,3 +16,18 @@ and install all the required packages.
 
 Runs the app in the development mode.\
 Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+
+
+## Git
+
+### `git checkout <branch-name>`
+
+Switch between project branches.
+
+### `git pull`
+
+Pull the latest version of the project.
+
+### `git merge main`
+
+Merge main with your working branch, so you can continue developing on your branch with the latest project version.
