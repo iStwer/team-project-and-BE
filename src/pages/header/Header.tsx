@@ -1,12 +1,14 @@
+import { Link } from "react-router-dom";
+
 export const Header = () => {
     return <div>
-        <h1 id="logo">PhysioReact</h1>
-        <ul>
-            <li>Naše služby</li>
-            <li>O nás</li>
-            <li>Ceník</li>
-            <li>Kontakty</li>
+        <Link to= '/'><h1 id="logo">PhysioReact</h1></Link>
+       <ul>
+            <li><Link to ='/services'>Naše služby</Link></li>
+            <li><Link to = '/aboutus'>O nás</Link></li>
+            <li><Link to = '/prices'>Ceník</Link></li>
+            <li><Link to = '/contact'>Kontakt</Link></li>
         </ul>
-        <button>Objednat se</button>
+        <button><Link to='/bookingform'>Objednat se</Link></button>
     </div>
 }
