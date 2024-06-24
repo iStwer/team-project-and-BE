@@ -1,3 +1,9 @@
+import { Link } from 'react-router-dom';
+import { ReviewCard } from './ReviewCard';
+import { FaqCard } from './FaqCard';
+import reviews from './reviews.json';
+import faqs from './faqs.json';
+
 export const LandingPage = () => {
   return (
     <div className='Main'>
@@ -5,20 +11,27 @@ export const LandingPage = () => {
         <h1>PhysioReact</h1>
         <p>když už tělo nemůže, PhysioReact pomůže</p>
         <div className='section1-buttons'>
-          <button>Objednat termín</button>
-          <button>Zjistit víc</button>
+          <Link to='/bookingform'>
+            <button>Objednat termín</button>
+          </Link>
+          <Link to='/aboutus'>
+            <button>Zjistit víc</button>
+          </Link>
         </div>
       </section>
       <section>
         <h2>Prevence je půl zdraví</h2>
         <article>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent
-          tempor, metus id tristique interdum, lectus sem tristique enim, non
-          ornare urna dui eu risus. Donec ut porta purus, eget lobortis nibh.
+          Vaše cesta k pohybové svobodě a zdraví začíná tady. Jsme tady pro vás,
+          abychom vám pomohli dosáhnout optimálního zdraví a pohybové kondice.
         </article>
         <div className='section2-buttons'>
-          <button>Naše služby</button>
-          <button>O nás</button>
+          <Link to='/services'>
+            <button>Naše služby</button>
+          </Link>
+          <Link to='/aboutus'>
+            <button>O nás</button>
+          </Link>
         </div>
       </section>
       <section>
@@ -46,59 +59,28 @@ export const LandingPage = () => {
             </p>
           </div>
         </div>
-        <button>Objednat se</button>
+        <Link to='/bookingform'>
+          <button>Objednat se</button>
+        </Link>
       </section>
       <section>
         <h2>Co o nás říkají naši klienti</h2>
-        <div className='Review'>
-          <p>
-            Morbi ullamcorper dolor tellus, quis mattis orci sagittis at.
-            Vivamus mattis pharetra elementum. Donec efficitur suscipit purus,
-            et pretium neque lacinia nec. Fusce non hendrerit ipsum.
-          </p>
-          <p>Name of reviewer</p>
-        </div>
-        <div className='Review'>
-          <p>
-            Morbi ullamcorper dolor tellus, quis mattis orci sagittis at.
-            Vivamus mattis pharetra elementum. Donec efficitur suscipit purus,
-            et pretium neque lacinia nec. Fusce non hendrerit ipsum.
-          </p>
-          <p>Name of reviewer</p>
-        </div>
-        <div className='Review'>
-          <p>
-            Morbi ullamcorper dolor tellus, quis mattis orci sagittis at.
-            Vivamus mattis pharetra elementum. Donec efficitur suscipit purus,
-            et pretium neque lacinia nec. Fusce non hendrerit ipsum.
-          </p>
-          <p>Name of reviewer</p>
-        </div>
-        <div className='Review'>
-          <p>
-            Morbi ullamcorper dolor tellus, quis mattis orci sagittis at.
-            Vivamus mattis pharetra elementum. Donec efficitur suscipit purus,
-            et pretium neque lacinia nec. Fusce non hendrerit ipsum.
-          </p>
-          <p>Name of reviewer</p>
-        </div>
+        {reviews.map((review) => (
+          <ReviewCard key={review.id} review={review} />
+        ))}
       </section>
       <section>
-        <div className='FAQ'>
-          <div className='question'>
-            <p>Dá se u vás platit kartou?</p>
-          </div>
-          <div className='question'>
-            <p>Dá se u vás platit kartou?</p>
-          </div>
-          <div className='question'>
-            <p>Dá se u vás platit kartou?</p>
-          </div>
+        <div id='FAQ'>
+          {faqs.map((faq) => (
+            <FaqCard key={faq.id} faq={faq} />
+          ))}
         </div>
         <div className='Form-link'>
           <h3>Máte otázku?</h3>
           <p>Vyplňte kontaktní formulář</p>
-          <button>Kontaktujte nás</button>
+          <Link to='/contact'>
+            <button>Kontaktujte nás</button>
+          </Link>
         </div>
       </section>
     </div>
