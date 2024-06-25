@@ -1,8 +1,9 @@
 import { Link } from 'react-router-dom';
+import { Container } from 'react-bootstrap';
 
 export const Prices = () => {
   return (
-    <div>
+    <Container>
       <h1>Ceník</h1>
       <table>
         <tbody>
@@ -29,6 +30,6 @@ export const Prices = () => {
           </Link>
         </div>
       </table>
-    </div>
+    </Container>
   );
 };

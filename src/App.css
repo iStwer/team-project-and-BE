@@ -1,0 +1,13 @@
+:root {
+  --action-color: #25dac5;
+  --heading-color: #1e0e62;
+  --text-color: #a1a1b0;
+}
+
+.app {
+  font-family: 'DM Sans', sans-serif;
+}
+
+.app-content {
+  padding-top: 64px;
+}

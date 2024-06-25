@@ -1,0 +1,18 @@
+.navbar {
+  background-color: white !important;
+}
+
+.navbar-brand {
+  color: var(--heading-color);
+  font-weight: 700;
+  line-height: 31.25px;
+}
+
+.bookingform-btn {
+  background-color: var(--action-color);
+  color: white;
+  border-radius: 20px;
+}
+.bookingform-btn:hover {
+  color: #061f1c;
+}

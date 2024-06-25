@@ -1,0 +1,13 @@
+.client-review-text {
+  font-size: 18px;
+  font-weight: 500;
+  line-height: 28px;
+  color: var(--text-color);
+}
+
+.client-review-name {
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 26px;
+  color: var(--heading-color);
+}
