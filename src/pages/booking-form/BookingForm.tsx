@@ -1,6 +1,8 @@
+import { Container } from 'react-bootstrap';
+
 export const BookingForm = () => {
   return (
-    <div>
+    <Container>
       <h1>Objednat se</h1>
       <form>
         <input type='text' placeholder='Křestní jméno' />
@@ -17,6 +19,6 @@ export const BookingForm = () => {
 
         <input type='date' />
       </form>
-    </div>
+    </Container>
   );
 };
