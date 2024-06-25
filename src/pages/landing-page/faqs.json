@@ -1,0 +1,17 @@
+[
+  {
+    "id": 1,
+    "question": "Jaké jsou možnosti placení za služby?",
+    "answer": "Nabízíme několik možností placení: hotově, platební kartou (VISA, MasterCard) nebo bankovním převodem. Pokud máte jakékoli dotazy ohledně placení, obraťte se na náš recepční tým."
+  },
+  {
+    "id": 2,
+    "question": "Můžu přijít na fyzioterapii bez doporučení od lékaře?",
+    "answer": "Ano, můžete se objednat na fyzioterapii bez doporučení od lékaře. Nicméně, pokud máte závažné zdravotní problémy, doporučujeme nejdříve konzultaci s vaším lékařem."
+  },
+  {
+    "id": 3,
+    "question": "Jak se objednat na první konzultaci?",
+    "answer": "Na první konzultaci se můžete objednat telefonicky nebo prostřednictvím naší e-mailové adresy. Můžete také využít náš online rezervační systém na webových stránkách."
+  }
+]
