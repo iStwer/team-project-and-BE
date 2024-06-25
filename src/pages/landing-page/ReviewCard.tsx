@@ -1,4 +1,6 @@
 import { FC } from 'react';
+import './ReviewCard.css';
+import { Col } from 'react-bootstrap';
 
 interface Review {
   id: number;
@@ -8,9 +10,9 @@ interface Review {
 
 export const ReviewCard = ({ review }: { review: Review }) => {
   return (
-    <div>
-      <p>{review.text}</p>
-      <p>{review.name}</p>
-    </div>
+    <Col sm={6}>
+      <p className='client-review-text'>{review.text}</p>
+      <p className='client-review-name'>{review.name}</p>
+    </Col>
   );
 };
