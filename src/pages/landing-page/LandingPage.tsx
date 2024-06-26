@@ -95,7 +95,7 @@ export const LandingPage = () => {
 
       <section className='faq-section'>
         <Row>
-          <Col xs={8} id='FAQ'>
+          <Col xs={12} md={8} id='FAQ'>
             {faqs.map((faq) => (
               <FaqCard key={faq.id} faq={faq} />
             ))}
