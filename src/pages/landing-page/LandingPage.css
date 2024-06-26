@@ -1,3 +1,6 @@
+.container {
+  max-width: 1000px;
+}
 .logo {
   font-size: 72px;
   font-weight: 700;
@@ -14,6 +17,42 @@
   text-align: center;
   color: var(--text-color);
   padding-top: 20px;
+}
+
+.section1-buttons {
+  text-align: center;
+  padding-top: 70px;
+}
+
+.action-btn {
+  background-color: var(--action-color);
+  color: white;
+  border-radius: 24px;
+  border: none;
+}
+.action-btn:hover {
+  background-color: var(--action-color);
+  color: var(--heading-color);
+}
+
+.booking-btn-lg {
+  padding: 12px 56px;
+  font-weight: 500;
+  font-size: 20px;
+  line-height: 26px;
+}
+
+.learn-more-link {
+  color: var(--action-color);
+  padding-top: 20px;
+  text-decoration: none;
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 26px;
+}
+
+.learn-more-link:hover {
+  color: var(--heading-color);
 }
 
 .intro-heading {
@@ -33,15 +72,69 @@
   color: var(--text-color);
 }
 
-.how-to-section {
-  padding-top: 120px;
-  padding-bottom: 60px;
+.section2-buttons {
+  text-align: center;
+  padding-top: 50px;
 }
+
+.services-btn {
+  padding: 17px 29px;
+  font-size: 20px;
+  font-weight: 500;
+  line-height: 26px;
+  border-radius: 50px;
+}
+.about-us-btn {
+  border-radius: 50px;
+  color: var(--text-color);
+  border: 2px solid var(--text-color);
+  margin-left: 24px;
+  padding: 17px 57.5px;
+  font-size: 20px;
+  font-weight: 500;
+  line-height: 26px;
+}
+
+.about-us-btn:hover {
+  color: var(--heading-color);
+  border: 2px solid var(--heading-color);
+  background-color: transparent;
+}
+
+.how-to-section {
+  padding: 120px 20px 60px;
+  text-align: left;
+}
+
+.step {
+  display: flex;
+  align-items: flex-start;
+  margin: 20px auto;
+  position: relative;
+}
+
+.step-icon {
+  width: 50px;
+  height: 50px;
+  line-height: 50px;
+  text-align: center;
+  border-radius: 50%;
+  background-color: #ebeaed;
+  color: var(--heading-color);
+  font-size: 18px;
+  flex-shrink: 0;
+}
+
+.step-content {
+  margin-left: 20px;
+}
+
 .how-to-main-heading {
   font-size: 42px;
   font-weight: 700;
   line-height: 52px;
   color: var(--heading-color);
+  padding-bottom: 30px;
 }
 
 .how-to-heading {
@@ -49,7 +142,8 @@
   font-weight: 500;
   line-height: 28px;
   color: var(--heading-color);
-  padding-top: 20px;
+  padding-top: 0px;
+  padding-left: 15px;
 }
 
 .how-to-text {
@@ -57,6 +151,26 @@
   font-weight: 400;
   line-height: 26px;
   color: var(--text-color);
+  padding: 0 15px;
+}
+
+.how-to-section .step:not(:last-child)::after {
+  content: '';
+  position: absolute;
+  left: 24px;
+  top: 50px;
+  height: calc(100% - 20px);
+  width: 2px;
+  background-color: #ebeaed;
+  z-index: -1;
+}
+
+.booking-btn-sm {
+  border-radius: 50px;
+  font-size: 18px;
+  font-weight: 500;
+  line-height: 26px;
+  padding: 12px 28px;
 }
 
 .clients-heading {
@@ -76,5 +190,31 @@
 }
 
 .faq-section {
-  padding-top: 120px;
+  padding-top: 80px;
+  padding-bottom: 80px;
+}
+
+.contact-us-section {
+  margin-top: 30px;
+  margin-left: 30px;
+}
+
+.contact-us-heading {
+  color: var(--text-color);
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 26px;
+}
+
+.contact-us-text {
+  color: var(--heading-color);
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 28px;
+}
+
+.contact-us-btn {
+  font-size: 16px;
+  font-style: 500;
+  line-height: 22px;
 }

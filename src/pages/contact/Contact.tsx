@@ -28,7 +28,7 @@ export const Contact = () => {
   };
 
   return (
-    <Container>
+    <Container className='mt-5'>
       <h1>Napište nám</h1>
       <section>
         <form onSubmit={handleSubmit}>

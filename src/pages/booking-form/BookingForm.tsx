@@ -2,7 +2,7 @@ import { Container } from 'react-bootstrap';
 
 export const BookingForm = () => {
   return (
-    <Container>
+    <Container className='mt-5'>
       <h1>Objednat se</h1>
       <form>
         <input type='text' placeholder='Křestní jméno' />
