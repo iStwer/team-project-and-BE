@@ -1,0 +1,16 @@
+.form-container {
+  max-width: 800px;
+}
+
+.contact-question {
+  color: var(--heading-color);
+}
+
+.contact-text {
+  color: var(--text-color);
+}
+
+.contact-phone {
+  color: var(--heading-color);
+  font-weight: 700;
+}
