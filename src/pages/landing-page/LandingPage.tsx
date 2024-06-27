@@ -8,8 +8,8 @@ import { Button, Container, Col, Row } from 'react-bootstrap';
 
 export const LandingPage = () => {
   return (
-    <Container fluid className='container'>
-      <section>
+    <Container>
+      <section className='first-section'>
         <h1 className='logo'>PhysioReact</h1>
         <p className='slogan'>když už tělo nemůže, PhysioReact pomůže</p>
         <div className='section1-buttons'>

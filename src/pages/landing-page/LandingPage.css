@@ -1,6 +1,16 @@
 .container {
   max-width: 1000px;
 }
+
+.first-section {
+  background-image: url('./background.png');
+
+  height: 500px;
+
+  background-repeat: no-repeat;
+  background-size: 120%;
+}
+
 .logo {
   font-size: 72px;
   font-weight: 700;
@@ -67,7 +77,7 @@
   line-height: 52px;
   color: var(--heading-color);
   text-align: center;
-  padding-top: 120px;
+  padding-top: 60px;
 }
 
 .intro-text {
