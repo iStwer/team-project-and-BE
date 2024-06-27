@@ -1,0 +1,24 @@
+{
+  "bookings": [
+    {
+      "id": 0,
+      "name": "Helena",
+      "surname": "Beranová",
+      "email": "email@email.cz",
+      "telephone": "123456789",
+      "service": "Manuální terapie a mobilizace",
+      "date": "2024-06-30",
+      "time": "10:00"
+    },
+    {
+      "id": 0,
+      "name": "React",
+      "surname": "Otrokyně",
+      "email": "mail@mail.com",
+      "telephone": "516488652",
+      "service": "Elektroterapie a ultrazvuk",
+      "date": "2024-06-29",
+      "time": "09:15"
+    }
+  ]
+}

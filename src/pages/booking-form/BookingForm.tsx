@@ -2,8 +2,10 @@ import { Container, Form, Button } from 'react-bootstrap';
 import './BookingForm.css';
 import services from '../../assets/services.json';
 import { FormEvent, ChangeEvent, useState, useEffect } from 'react';
+import axios from 'axios';
 
 interface FormInputData {
+  id: number;
   name: string;
   surname: string;
   email: string;
@@ -19,6 +21,7 @@ export const BookingForm = () => {
   const maxDate = d.getFullYear() + 1 + '-01-01';
 
   const [inputData, setInputData] = useState<FormInputData>({
+    id: 0,
     name: '',
     surname: '',
     email: '',
@@ -39,10 +42,8 @@ export const BookingForm = () => {
     }));
   };
   
-
-  const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-
     const selectedDateTime = new Date(inputData.date + 'T' + inputData.time + ':00');
     const currentDateTime = new Date();
 
@@ -50,18 +51,27 @@ export const BookingForm = () => {
     if (selectedDateTime <= currentDateTime) {
       return; // Pokud je vybraný čas menší nebo roven aktuálnímu času, nebudeme formulář odesílat
     }
-
-    localStorage.setItem('formSubmitted', 'true');
-    setFormSubmitted(true);
-    setInputData({
-      name: '',
-      surname: '',
-      email: '',
-      telephone: '',
-      service: '',
-      date: '',
-      time: '',
-    });
+    try {
+      const response = await axios.post(
+        'http://localhost:5000/bookings',
+        inputData,
+      );
+      console.log('Booking submitted', response.data);//
+      localStorage.setItem('formSubmitted', 'true');
+      setFormSubmitted(true);
+      setInputData({
+        id: 0,
+        name: '',
+        surname: '',
+        email: '',
+        telephone: '',
+        service: '',
+        date: '',
+        time: '',
+      });
+    } catch (err) {
+      console.error(err);
+    }
   };
 
   const generateHoursOptions = () => {
@@ -92,6 +102,22 @@ export const BookingForm = () => {
       }, 5000);
     }
   }, []);
+
+  //server endpoint check
+  const fetchBookings = async () => {
+    try {
+      const response = await fetch('http://localhost:5000/bookings').then(
+        (res) => res.json(),
+      );
+      console.log(response);
+    } catch (err) {
+      console.error(err);
+    }
+  };
+
+  useEffect(() => {
+    fetchBookings();
+  }, [formSubmitted]);
 
   return (
     <Container className='mt-5 form-container'>
