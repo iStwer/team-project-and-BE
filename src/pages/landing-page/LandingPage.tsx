@@ -37,6 +37,24 @@ export const LandingPage = () => {
         </div>
       </section>
 
+      <section className='faq-section'>
+        <h2 className='how-to-main-heading'>FAQ</h2>
+        <Row>
+          <Col xs={8} id='FAQ'>
+            {faqs.map((faq) => (
+              <FaqCard key={faq.id} faq={faq} />
+            ))}
+          </Col>
+          <Col className='Form-link'>
+            <h3>Máte otázku?</h3>
+            <p>Vyplňte kontaktní formulář</p>
+            <Link to='/contact'>
+              <Button>Kontaktujte nás</Button>
+            </Link>
+          </Col>
+        </Row>
+      </section>
+
       <section className='how-to-section'>
         <h2 className='how-to-main-heading'>Jak to u nás funguje?</h2>
         <div>
@@ -76,22 +94,7 @@ export const LandingPage = () => {
         </Row>
       </section>
 
-      <section className='faq-section'>
-        <Row>
-          <Col xs={8} id='FAQ'>
-            {faqs.map((faq) => (
-              <FaqCard key={faq.id} faq={faq} />
-            ))}
-          </Col>
-          <Col className='Form-link'>
-            <h3>Máte otázku?</h3>
-            <p>Vyplňte kontaktní formulář</p>
-            <Link to='/contact'>
-              <Button>Kontaktujte nás</Button>
-            </Link>
-          </Col>
-        </Row>
-      </section>
+      
     </Container>
   );
 };

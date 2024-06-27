@@ -13,5 +13,20 @@
     "id": 3,
     "question": "Jak se objednat na první konzultaci?",
     "answer": "Na první konzultaci se můžete objednat telefonicky nebo prostřednictvím naší e-mailové adresy. Můžete také využít náš online rezervační systém na webových stránkách."
+  },
+  {
+    "id": 4,
+    "question": "Je vaše klinika dostupná pro osoby s omezenou pohyblivostí?",
+    "answer": "Ano, naše klinika je plně přístupná pro osoby s omezenou pohyblivostí. Máme bezbariérový vstup a výtah. Pokud potřebujete jakoukoli speciální asistenci, informujte nás prosím předem."
+  },
+  {
+    "id": 5,
+    "question": "Co mám dělat, když se můj stav během terapie zhorší?",
+    "answer": "Pokud zaznamenáte jakékoli zhoršení stavu nebo nové symptomy, ihned kontaktujte svého fyzioterapeuta. Mohou být potřeba úpravy v plánu léčby nebo další konzultace."
+  },
+  {
+    "id": 6,
+    "question": "Jaké jsou vaše storno podmínky?",
+    "answer": "Pokud potřebujete zrušit nebo změnit termín své návštěvy, prosíme vás, abyste nás kontaktovali alespoň 24 hodin předem. V případě pozdního zrušení může být účtován storno poplatek."
   }
 ]

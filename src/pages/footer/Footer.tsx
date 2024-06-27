@@ -22,7 +22,7 @@ export const Footer = () => {
           <Nav.Link href='/gdpr' className='footer-link'>
             Zpracování osobních údajů
           </Nav.Link>
-          <Nav.Link href='/prices' className='footer-link'>
+          <Nav.Link href='#FAQ' className='footer-link'>
             Q&A
           </Nav.Link>
           <Nav.Link href='/contact' className='footer-link'>
