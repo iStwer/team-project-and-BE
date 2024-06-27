@@ -4,12 +4,12 @@ import './Footer.css';
 
 export const Footer = () => {
   return (
-    <Container className='footer'>
+    <Container className='footer' fluid>
       <ListGroup horizontal>
-        <Link className='navbar-brand ' to='/' id='logo'>
-          PhysioReact
-        </Link>
         <Nav className='mx-auto'>
+          <Link className='navbar-brand ' to='/' id='logo'>
+            PhysioReact
+          </Link>
           <Nav.Link href='/services' className='footer-link'>
             Naše služby
           </Nav.Link>
@@ -22,6 +22,7 @@ export const Footer = () => {
           <Nav.Link href='/gdpr' className='footer-link'>
             Zpracování osobních údajů
           </Nav.Link>
+
           <Nav.Link href='#FAQ' className='footer-link'>
             Q&A
           </Nav.Link>

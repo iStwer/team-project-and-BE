@@ -1,0 +1,30 @@
+[
+  {
+    "id": 1,
+    "name": "Individuální fyzioterapeutický plán"
+  },
+  {
+    "id": 2,
+    "name": "Manuální terapie a mobilizace"
+  },
+  {
+    "id": 3,
+    "name": "Terapeutické cvičení a posilování"
+  },
+  {
+    "id": 4,
+    "name": "Elektroterapie a ultrazvuk"
+  },
+  {
+    "id": 5,
+    "name": "Sportovní fyzioterapie"
+  },
+  {
+    "id": 6,
+    "name": "Rehabilitace po operacích a úrazech"
+  },
+  {
+    "id": 7,
+    "name": "Prevence a poradenství"
+  }
+]

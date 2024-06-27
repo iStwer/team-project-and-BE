@@ -3,7 +3,7 @@ import { Container } from 'react-bootstrap';
 export const Gdpr = () => {
   return (
     <>
-      <Container>
+      <Container className='mt-5'>
         <h1>Informace pro pacienty o zpracování osobních údajů a GDPR</h1>
         <p>
           podle nařízení Evropského parlamentu a Rady (EU) 2016/679 ze dne 27.
