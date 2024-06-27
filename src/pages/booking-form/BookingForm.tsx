@@ -2,6 +2,7 @@ import { Container, Form, Button } from 'react-bootstrap';
 import './BookingForm.css';
 import services from '../../assets/services.json';
 import { FormEvent, ChangeEvent, useState, useEffect } from 'react';
+import axios from 'axios';
 
 interface FormInputData {
   id: number;
@@ -41,22 +42,29 @@ export const BookingForm = () => {
     }));
   };
 
-  const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
-    //e.preventDefault();
-    localStorage.setItem('formSubmitted', 'true');
-    setFormSubmitted(true);
-    console.log(inputData);
-    console.log('form submitted');
-    setInputData({
-      id: 0,
-      name: '',
-      surname: '',
-      email: '',
-      telephone: '',
-      service: '',
-      date: '',
-      time: '',
-    });
+  const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    try {
+      const response = await axios.post(
+        'http://localhost:5000/bookings',
+        inputData,
+      );
+      console.log('Booking submitted', response.data);//
+      localStorage.setItem('formSubmitted', 'true');
+      setFormSubmitted(true);
+      setInputData({
+        id: 0,
+        name: '',
+        surname: '',
+        email: '',
+        telephone: '',
+        service: '',
+        date: '',
+        time: '',
+      });
+    } catch (err) {
+      console.error(err);
+    }
   };
 
   useEffect(() => {
@@ -69,14 +77,21 @@ export const BookingForm = () => {
     }
   }, []);
 
+  //server endpoint check
   const fetchBookings = async () => {
-    const response = await fetch('http://localhost:5000/bookings').then((res) =>
-      res.json(),
-    );
-    console.log(response);
+    try {
+      const response = await fetch('http://localhost:5000/bookings').then(
+        (res) => res.json(),
+      );
+      console.log(response);
+    } catch (err) {
+      console.error(err);
+    }
   };
 
-  fetchBookings();
+  useEffect(() => {
+    fetchBookings();
+  }, [formSubmitted]);
 
   return (
     <Container className='mt-5 form-container'>
