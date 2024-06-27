@@ -19,6 +19,16 @@
       "service": "Elektroterapie a ultrazvuk",
       "date": "2024-06-29",
       "time": "09:15"
+    },
+    {
+      "id": 0,
+      "name": "Alena",
+      "surname": "Nováková",
+      "email": "mail@mail.com",
+      "telephone": "605074261",
+      "service": "Manuální terapie a mobilizace",
+      "date": "2024-06-28",
+      "time": "12:00"
     }
   ]
 }

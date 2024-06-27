@@ -41,10 +41,12 @@ export const BookingForm = () => {
       [name]: value,
     }));
   };
-  
+
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    const selectedDateTime = new Date(inputData.date + 'T' + inputData.time + ':00');
+    const selectedDateTime = new Date(
+      inputData.date + 'T' + inputData.time + ':00',
+    );
     const currentDateTime = new Date();
 
     // Kontrola, zda vybrané datum a čas jsou v budoucnosti
@@ -53,10 +55,10 @@ export const BookingForm = () => {
     }
     try {
       const response = await axios.post(
-        'http://localhost:5000/bookings',
+        'http://localhost:3001/bookings',
         inputData,
       );
-      console.log('Booking submitted', response.data);//
+      console.log('Booking submitted', response.data); //
       localStorage.setItem('formSubmitted', 'true');
       setFormSubmitted(true);
       setInputData({
@@ -77,14 +79,23 @@ export const BookingForm = () => {
   const generateHoursOptions = () => {
     const currentHour = d.getHours();
     const availableHours = [
-      '09:00', '10:00', '11:00', '12:00', 
-      '13:00', '14:00', '15:00', '16:00', 
-      '17:00', '18:00'
+      '09:00',
+      '10:00',
+      '11:00',
+      '12:00',
+      '13:00',
+      '14:00',
+      '15:00',
+      '16:00',
+      '17:00',
+      '18:00',
     ];
     if (inputData.date === today) {
-      return availableHours.filter(hour => parseInt(hour.substr(0, 2)) > currentHour);
+      return availableHours.filter(
+        (hour) => parseInt(hour.substr(0, 2)) > currentHour,
+      );
     }
-    
+
     return availableHours;
   };
 
@@ -106,7 +117,7 @@ export const BookingForm = () => {
   //server endpoint check
   const fetchBookings = async () => {
     try {
-      const response = await fetch('http://localhost:5000/bookings').then(
+      const response = await fetch('http://localhost:3001/bookings').then(
         (res) => res.json(),
       );
       console.log(response);
@@ -222,21 +233,21 @@ export const BookingForm = () => {
             as='select'
             id='time'
             name='time'
-            step = '1800'
+            step='1800'
             min='09:00'
             max='17:30'
             onChange={handleChange}
             required
           >
-          <option value='' disabled selected hidden>
-          Vyberte čas návštěvy
-        </option>
-        {generateHoursOptions().map((hour) => (
+            <option value='' disabled selected hidden>
+              Vyberte čas návštěvy
+            </option>
+            {generateHoursOptions().map((hour) => (
               <option key={hour} value={hour}>
                 {hour}
               </option>
             ))}
-        </Form.Control>
+          </Form.Control>
         </Form.Group>
 
         <Button type='submit' className='action-btn mt-3 mb-5'>
