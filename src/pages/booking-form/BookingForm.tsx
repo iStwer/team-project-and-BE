@@ -1,24 +1,68 @@
-import { Container } from 'react-bootstrap';
+import { Container, Form, Button } from 'react-bootstrap';
+import './BookingForm.css';
 
 export const BookingForm = () => {
   return (
-    <Container>
+    <Container className='mt-5 form-container'>
       <h1>Objednat se</h1>
-      <form>
-        <input type='text' placeholder='Křestní jméno' />
-        <input type='text' placeholder='Příjmení' />
+      <Form className='mt-5'>
+        <Form.Group className='mb-3'>
+          <Form.Label htmlFor='name'>Křestní jméno</Form.Label>
+          <Form.Control type='text' placeholder='Křestní jméno' id='name' />
+        </Form.Group>
 
-        <div>
-          <label htmlFor='sluzby'>Vyberte službu:</label>
-          <select name='sluzby' id='sluzby'>
-            <option value='blabla'>sluzba 1</option>
-            <option value='blabla'>sluzba 2</option>
-            <option value='blabla'>sluzba 3</option>
-          </select>
-        </div>
+        <Form.Group className='mb-3'>
+          <Form.Label htmlFor='surname'>Příjmení</Form.Label>
+          <Form.Control type='text' placeholder='Příjmení' id='surname' />
+        </Form.Group>
 
-        <input type='date' />
-      </form>
+        <Form.Group className='mb-3'>
+          <Form.Label htmlFor='email'>E-mail</Form.Label>
+          <Form.Control
+            type='email'
+            placeholder='E-mailová adresa'
+            id='email'
+          />
+          <Form.Text className='text-muted'>
+            Váš e-mail nebudeme s nikým sdílet.
+          </Form.Text>
+        </Form.Group>
+
+        <Form.Group className='mb-3'>
+          <Form.Label htmlFor='telephone'>Telefonní číslo</Form.Label>
+          <Form.Control
+            type='tel'
+            placeholder='Telefonní číslo'
+            id='telephone'
+          />
+          <Form.Text className='text-muted'>
+            Vaše telefonní číslo nebudeme s nikým sdílet.
+          </Form.Text>
+        </Form.Group>
+
+        <Form.Group className='mb-3'>
+          <Form.Label htmlFor='sluzby'>Vyberte službu:</Form.Label>
+          <Form.Control as='select' id='sluzby'>
+            <option value='service1'>sluzba 1</option>
+            <option value='service2'>sluzba 2</option>
+            <option value='service3'>sluzba 3</option>
+          </Form.Control>
+        </Form.Group>
+
+        <Form.Group className='mb-3'>
+          <Form.Label htmlFor='date'>Vyberte termín:</Form.Label>
+          <Form.Control type='date' id='date' />
+        </Form.Group>
+
+        <Form.Group className='mb-3'>
+          <Form.Label htmlFor='date'>Vyberte čas návštěvy:</Form.Label>
+          <Form.Control type='time' id='time' />
+        </Form.Group>
+
+        <Button type='submit' className='action-btn mt-3 mb-5'>
+          Objednat se
+        </Button>
+      </Form>
     </Container>
   );
 };

@@ -1,0 +1,9 @@
+.form-container {
+  max-width: 800px;
+}
+
+.form-label {
+  color: var(--heading-color);
+  font-weight: 700;
+  font-size: 18px;
+}
