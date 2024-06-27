@@ -1,5 +1,5 @@
 import { Container, Button, Form } from 'react-bootstrap';
-import { useState, ChangeEvent, FormEvent } from 'react';
+import { useState, useEffect, ChangeEvent, FormEvent } from 'react';
 import './Contact.css';
 
 interface FormInputData {
@@ -8,19 +8,21 @@ interface FormInputData {
   message: string;
 }
 
-const contactDetails = {
-  address: 'Národní technická knihovna, Technická 2710/6, 160 80 Praha 6' ,
-  phone: '158',
-  email: '4reactotrokyne@physioreact.achjo',
-  openingHours: 'Pondělí - Pátek, 8:00 - 18:00',
-};
-
 export const Contact = () => {
+  const contactDetails = {
+    address: 'Národní technická knihovna, Technická 2710/6, 160 80 Praha 6',
+    phone: '158',
+    email: '4reactotrokyne@physioreact.achjo',
+    openingHours: 'Pondělí - Pátek, 8:00 - 18:00',
+  };
+
   const [inputData, setInputData] = useState<FormInputData>({
     name: '',
     email: '',
     message: '',
   });
+
+  const [formSubmitted, setFormSubmitted] = useState<boolean>(false);
 
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
@@ -31,26 +33,46 @@ export const Contact = () => {
   };
 
   const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
+    //e.preventDefault();
+    localStorage.setItem('formSubmitted', 'true');
+    setFormSubmitted(true);
     console.log(inputData);
+    setInputData({
+      name: '',
+      email: '',
+      message: '',
+    });
   };
 
-  return (
+  useEffect(() => {
+    if (localStorage.getItem('formSubmitted') === 'true') {
+      setFormSubmitted(true);
+      setTimeout(() => {
+        localStorage.removeItem('formSubmitted');
+        setFormSubmitted(false);
+      }, 5000);
+    }
+  }, []);
 
+  return (
     <div className='contact-form-body'>
       <Container className='mt-5 form-container'>
-          <h1>Kontaktujte nás</h1>
-      <div>
-        <p>Adresa: {contactDetails.address}</p>
-        <p>Telefon: {contactDetails.phone}</p>
-        <p>E-mail: {contactDetails.email}</p>
-        <p>Otevírací doba: {contactDetails.openingHours}</p>
-      </div>
+        {localStorage.getItem('formSubmitted') && (
+          <div className='infoMessage'>Formulář byl úspěšně odeslán!</div>
+        )}
+        <h1>Kontaktujte nás</h1>
+        <div>
+          <p>Adresa: {contactDetails.address}</p>
+          <p>Telefon: {contactDetails.phone}</p>
+          <p>E-mail: {contactDetails.email}</p>
+          <p>Otevírací doba: {contactDetails.openingHours}</p>
+        </div>
         <h1>Napište nám</h1>
         <Form onSubmit={handleSubmit} className='mt-5'>
           <Form.Group className='mb-3'>
             <Form.Label htmlFor='contact-name'>Jméno</Form.Label>
-            <Form.Control  type='text'
+            <Form.Control
+              type='text'
               name='name'
               id='contact-name'
               placeholder='Vaše jméno'

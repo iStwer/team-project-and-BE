@@ -1,7 +1,16 @@
 import { Container } from 'react-bootstrap';
-
 import { EmployeeCard } from './EmployeeCard';
-import { employees } from './Employees';
+import employees from './employees.json';
+
+interface Employee {
+  id: number;
+  name: string;
+  specialization: string;
+  education: string;
+  freeTime: string;
+  others: string;
+  alt: string;
+}
 
 export const Aboutus = () => {
   return (
@@ -32,8 +41,8 @@ export const Aboutus = () => {
           dovednosti, aby vám mohl poskytnout tu nejlepší péči.
         </p>
       </Container>
-      {employees.map((employee) => (
-        <EmployeeCard key={employee.id} employees={employee} />
+      {employees.map((employee: Employee) => (
+        <EmployeeCard key={employee.id} employee={employee} />
       ))}
     </>
   );
