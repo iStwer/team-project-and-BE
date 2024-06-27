@@ -4,6 +4,7 @@ import services from '../../assets/services.json';
 import { FormEvent, ChangeEvent, useState, useEffect } from 'react';
 
 interface FormInputData {
+  id: number;
   name: string;
   surname: string;
   email: string;
@@ -19,6 +20,7 @@ export const BookingForm = () => {
   const maxDate = d.getFullYear() + 1 + '-01-01';
 
   const [inputData, setInputData] = useState<FormInputData>({
+    id: 0,
     name: '',
     surname: '',
     email: '',
@@ -46,6 +48,7 @@ export const BookingForm = () => {
     console.log(inputData);
     console.log('form submitted');
     setInputData({
+      id: 0,
       name: '',
       surname: '',
       email: '',
@@ -65,6 +68,15 @@ export const BookingForm = () => {
       }, 5000);
     }
   }, []);
+
+  const fetchBookings = async () => {
+    const response = await fetch('http://localhost:5000/bookings').then((res) =>
+      res.json(),
+    );
+    console.log(response);
+  };
+
+  fetchBookings();
 
   return (
     <Container className='mt-5 form-container'>

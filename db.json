@@ -1,0 +1,14 @@
+{
+  "bookings": [
+    {
+      "id": 0,
+      "name": "Helena",
+      "surname": "Beranová",
+      "email": "email@email.cz",
+      "telephone": "123456789",
+      "service": "Manuální terapie a mobilizace",
+      "date": "2024-06-30",
+      "time": "10:00"
+    }
+  ]
+}
