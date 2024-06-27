@@ -2,6 +2,7 @@ import profile1 from '../../assets/about-us/profile1.png';
 import profile2 from '../../assets/about-us/profile2.png';
 import profile3 from '../../assets/about-us/profile3.png';
 import profile4 from '../../assets/about-us/profile4.png';
+import helenka from '../../assets/about-us/helenka.jpg';
 
 interface Employees {
   id: number;
@@ -26,7 +27,7 @@ export const employees: Employees[] = [
       'Jan má více než 15 let zkušeností v oboru fyzioterapie a je odborníkem na manuální techniky a rehabilitaci sportovců.',
     src: profile1,
     alt: 'Jan Novák profile picture',
-  },
+  },/*
   {
     id: 2,
     name: 'Bc. Petra Svobodová',
@@ -38,6 +39,18 @@ export const employees: Employees[] = [
       'Petra se zaměřuje na komplexní rehabilitaci a pomáhá pacientům vrátit se k normálnímu životu po úrazech a chirurgických zákrocích.',
     src: profile2,
     alt: 'Petra Svobodová profile picture',
+  },*/
+  {
+    id: 2,
+    name: 'MUDR. Helena Beranová, Ph.D.',
+    specialization: 'Rehabilitace po operacích a úrazech',
+    education: 'Studium medicíny na Oxfordské univerzitě',
+    freeTime:
+      'Helča je nadšená běžkyně a pravidelně se účastní maratonů. Ráda také čte detektivky a tráví čas se svou rodinou na chalupě.',
+    others:
+      'Helča se zaměřuje na komplexní rehabilitaci a pomáhá pacientům vrátit se k normálnímu životu po úrazech a chirurgických zákrocích.',
+    src: helenka,
+    alt: 'Helena Beranová profile picture',
   },
   {
     id: 3,
