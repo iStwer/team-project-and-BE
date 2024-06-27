@@ -1,13 +1,16 @@
 import { Container, Form, Button } from 'react-bootstrap';
 import './BookingForm.css';
 import services from './services.json';
-import { ChangeEvent, useState } from 'react';
+import { FormEvent, ChangeEvent, useState, useEffect } from 'react';
 
 interface FormInputData {
-  firstName: string;
-  lastName: string;
+  name: string;
+  surname: string;
+  email: string;
+  telephone: string;
   service: string;
   date: string;
+  time: string;
 }
 
 export const BookingForm = () => {
@@ -16,15 +19,18 @@ export const BookingForm = () => {
   const maxDate = d.getFullYear() + 1 + '-01-01';
 
   const [inputData, setInputData] = useState<FormInputData>({
-    firstName: '',
-    lastName: '',
+    name: '',
+    surname: '',
+    email: '',
+    telephone: '',
     service: '',
     date: '',
+    time: '',
   });
 
-  const handleChange = (
-    e: ChangeEvent<HTMLInputElement | HTMLSelectElement>,
-  ) => {
+  const [formSubmitted, setFormSubmitted] = useState<boolean>(false);
+
+  const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
     console.log(name, value);
     setInputData((prevData) => ({
@@ -33,64 +39,65 @@ export const BookingForm = () => {
     }));
   };
 
-  /*const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
+  const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
+    //e.preventDefault();
+    localStorage.setItem('formSubmitted', 'true');
+    setFormSubmitted(true);
     console.log(inputData);
     console.log('form submitted');
-  };*/
+    setInputData({
+      name: '',
+      surname: '',
+      email: '',
+      telephone: '',
+      service: '',
+      date: '',
+      time: '',
+    });
+  };
+
+  useEffect(() => {
+    if (localStorage.getItem('formSubmitted') === 'true') {
+      setFormSubmitted(true);
+      setTimeout(() => {
+        localStorage.removeItem('formSubmitted');
+        setFormSubmitted(false);
+      }, 5000);
+    }
+  }, []);
 
   return (
     <Container className='mt-5 form-container'>
+      {localStorage.getItem('formSubmitted') && (
+        <div className='infoMessage'>Formulář byl úspěšně odeslán!</div>
+      )}
       <h1>Objednat se</h1>
 
-    /*<form action='https://formsubmit.co/physioreact@seznam.cz' method='POST'>
-        <input
-          type='text'
-          placeholder='Křestní jméno'
-          name='firstName'
-          required
-          onChange={handleChange}
-        />
-        <input
-          type='text'
-          placeholder='Příjmení'
-          name='lastName'
-          required
-          onChange={handleChange}
-        />
-        <div>
-          <label htmlFor='sluzby'>Vyberte službu:</label>
-          <select name='service' id='sluzby' required onChange={handleChange}>
-            <option value='' disabled selected hidden>
-              Služba
-            </option>
-            {services.map((service) => (
-              <option key={service.id} value={service.name}>
-                {service.name}
-              </option>
-            ))}
-          </select>
-        </div>
-        <input
-          type='date'
-          name='date'
-          min={today}
-          max={maxDate}
-          required
-          onChange={handleChange}
-        />
-        <button type='submit'>Objednat se</button>
-      </form> */
+      {/*<form action='https://formsubmit.co/physioreact@seznam.cz' method='POST'></form>*/}
 
-      <Form className='mt-5'>
+      <Form className='mt-5' onSubmit={handleSubmit}>
         <Form.Group className='mb-3'>
           <Form.Label htmlFor='name'>Křestní jméno</Form.Label>
-          <Form.Control type='text' placeholder='Křestní jméno' id='name' />
+          <Form.Control
+            type='text'
+            placeholder='Křestní jméno'
+            id='name'
+            name='name'
+            onChange={handleChange}
+            required
+          />
         </Form.Group>
 
         <Form.Group className='mb-3'>
           <Form.Label htmlFor='surname'>Příjmení</Form.Label>
-          <Form.Control type='text' placeholder='Příjmení' id='surname' />
+          <Form.Control
+            type='text'
+            placeholder='Příjmení'
+            id='surname'
+            name='surname'
+            onChange={handleChange}
+            required
+          />
         </Form.Group>
 
         <Form.Group className='mb-3'>
@@ -99,6 +106,9 @@ export const BookingForm = () => {
             type='email'
             placeholder='E-mailová adresa'
             id='email'
+            name='email'
+            onChange={handleChange}
+            required
           />
           <Form.Text className='text-muted'>
             Váš e-mail nebudeme s nikým sdílet.
@@ -111,6 +121,9 @@ export const BookingForm = () => {
             type='tel'
             placeholder='Telefonní číslo'
             id='telephone'
+            name='telephone'
+            onChange={handleChange}
+            required
           />
           <Form.Text className='text-muted'>
             Vaše telefonní číslo nebudeme s nikým sdílet.
@@ -119,28 +132,54 @@ export const BookingForm = () => {
 
         <Form.Group className='mb-3'>
           <Form.Label htmlFor='sluzby'>Vyberte službu:</Form.Label>
-          <Form.Control as='select' id='sluzby'>
-            <option value='service1'>sluzba 1</option>
-            <option value='service2'>sluzba 2</option>
-            <option value='service3'>sluzba 3</option>
+          <Form.Control
+            as='select'
+            id='sluzby'
+            name='service'
+            onChange={handleChange}
+            required
+          >
+            <option value='' disabled selected hidden>
+              --vyberte službu--
+            </option>
+            {services.map((service) => (
+              <option key={service.id} value={service.name}>
+                {service.name}
+              </option>
+            ))}
           </Form.Control>
         </Form.Group>
 
         <Form.Group className='mb-3'>
           <Form.Label htmlFor='date'>Vyberte termín:</Form.Label>
-          <Form.Control type='date' id='date' />
+          <Form.Control
+            type='date'
+            id='date'
+            name='date'
+            min={today}
+            max={maxDate}
+            onChange={handleChange}
+            required
+          />
         </Form.Group>
 
         <Form.Group className='mb-3'>
-          <Form.Label htmlFor='date'>Vyberte čas návštěvy:</Form.Label>
-          <Form.Control type='time' id='time' />
+          <Form.Label htmlFor='time'>Vyberte čas návštěvy:</Form.Label>
+          <Form.Control
+            type='time'
+            id='time'
+            name='time'
+            min='09:00'
+            max='18:00'
+            onChange={handleChange}
+            required
+          />
         </Form.Group>
 
         <Button type='submit' className='action-btn mt-3 mb-5'>
           Objednat se
         </Button>
       </Form>
-
     </Container>
   );
 };
