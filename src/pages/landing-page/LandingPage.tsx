@@ -45,7 +45,7 @@ export const LandingPage = () => {
         </div>
       </section>
 
-      <section className='faq-section'>
+      <section className='faq-section' id='faq'>
         <h2 className='how-to-main-heading'>FAQ</h2>
         <Row>
           <Col xs={12} md={8} id='FAQ'>
@@ -71,30 +71,44 @@ export const LandingPage = () => {
           <div className='step'>
             <div className='step-icon'>1</div>
             <div className='step-content'>
-              <h4 className='how-to-heading'>Vstupní konzultace</h4>
+              <h4 className='how-to-heading'>Objednání se na konzultaci</h4>
               <p className='how-to-text'>
-                Donec eu ultricies est, non cursus eros. Sed velit felis,
-                gravida vel rutrum id, finibus sed odio.
+                Objednání na první konzultaci je snadné a rychlé. Můžete nás
+                kontaktovat telefonicky, e-mailem nebo využít náš online
+                rezervační systém na webových stránkách. Po domluvě termínu vám
+                zašleme potvrzení a další potřebné informace.
               </p>
             </div>
           </div>
           <div className='step'>
             <div className='step-icon'>2</div>
             <div className='step-content'>
-              <h4 className='how-to-heading'>Nadpis 2</h4>
+              <h4 className='how-to-heading'>
+                {' '}
+                První návštěva a vstupní konzultace
+              </h4>
               <p className='how-to-text'>
-                Donec eu ultricies est, non cursus eros. Sed velit felis,
-                gravida vel rutrum id, finibus sed odio.
+                Při první návštěvě vás přivítá náš přátelský tým a vyplníte
+                krátký zdravotní dotazník. Poté se setkáte s jedním z našich
+                zkušených fyzioterapeutů, který provede podrobnou diagnostiku a
+                vyslechne vaše potřeby a cíle. Na základě těchto informací
+                sestavíme individuální léčebný plán přímo pro vás.
               </p>
             </div>
           </div>
           <div className='step'>
             <div className='step-icon'>3</div>
             <div className='step-content'>
-              <h4 className='how-to-heading'>Nadpis 3</h4>
+              <h4 className='how-to-heading'>
+                Pravidelné terapie a sledování pokroků
+              </h4>
               <p className='how-to-text'>
-                Donec eu ultricies est, non cursus eros. Sed velit felis,
-                gravida vel rutrum id, finibus sed odio.
+                Na základě vašeho individuálního plánu zahájíme terapii.
+                Pravidelně se budeme setkávat podle domluveného harmonogramu,
+                abychom zajistili, že terapie postupuje správně a vy dosahujete
+                svých cílů. Během každé návštěvy budeme sledovat vaše pokroky a
+                v případě potřeby upravíme léčebný plán tak, aby vám co nejlépe
+                vyhovoval.
               </p>
             </div>
           </div>
