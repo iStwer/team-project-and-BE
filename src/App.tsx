@@ -8,6 +8,7 @@ import { Contact } from './pages/contact/Contact';
 import { LandingPage } from './pages/landing-page/LandingPage';
 import { Header } from './pages/header/Header';
 import { BookingForm } from './pages/booking-form/BookingForm';
+import { Gdpr } from './pages/gdpr/Gdpr';
 
 function App() {
   return (
@@ -21,6 +22,7 @@ function App() {
           <Route path='/services' element={<Services />} />
           <Route path='/contact' element={<Contact />} />
           <Route path='/bookingform' element={<BookingForm />} />
+          <Route path='/gdpr' element={<Gdpr />} />
         </Routes>
       </div>
       <Footer />

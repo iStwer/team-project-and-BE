@@ -1,5 +1,6 @@
-import { Container } from 'react-bootstrap';
+import { Container, Button, Form } from 'react-bootstrap';
 import { useState, ChangeEvent, FormEvent } from 'react';
+import './Contact.css';
 
 interface FormInputData {
   name: string;
@@ -35,45 +36,61 @@ export const Contact = () => {
   };
 
   return (
-    <Container>
-      <h1>Kontaktujte nás</h1>
+
+    <div className='contact-form-body'>
+      <Container className='mt-5 form-container'>
+          <h1>Kontaktujte nás</h1>
       <div>
         <p>Adresa: {contactDetails.address}</p>
         <p>Telefon: {contactDetails.phone}</p>
         <p>E-mail: {contactDetails.email}</p>
         <p>Otevírací doba: {contactDetails.openingHours}</p>
       </div>
-      <h1>Napište nám</h1>
-      <section>
-        <form onSubmit={handleSubmit}>
-          <div>
-            <input
-              type='text'
+        <h1>Napište nám</h1>
+        <Form onSubmit={handleSubmit} className='mt-5'>
+          <Form.Group className='mb-3'>
+            <Form.Label htmlFor='contact-name'>Jméno</Form.Label>
+            <Form.Control  type='text'
               name='name'
-              placeholder='vaše jméno'
+              id='contact-name'
+              placeholder='Vaše jméno'
               onChange={handleChange}
             />
-            <input
+          </Form.Group>
+          <Form.Group className='mb-3'>
+            <Form.Label htmlFor='contact-email'>E-mail</Form.Label>
+            <Form.Control
               type='text'
               name='email'
-              placeholder='váš e-mail'
+              id='contact-email'
+              placeholder='Váš e-mail'
               onChange={handleChange}
             />
-          </div>
-          <input
-            type='text'
-            id='your-message'
-            name='message'
-            placeholder='vaše zpráva'
-            onChange={handleChange}
-          />
-          <button type='submit'>Odeslat</button>
-        </form>
+          </Form.Group>
+          <Form.Group className='mb-3'>
+            <Form.Label htmlFor='your-message'>Zpráva</Form.Label>
+            <Form.Control
+              as='textarea'
+              id='your-message'
+              name='message'
+              placeholder='Vaše zpráva'
+              className='your-message'
+              rows={5}
+              onChange={handleChange}
+            />
+          </Form.Group>
+          <Button type='submit' className='action-btn mt-3 mb-5'>
+            Odeslat
+          </Button>
+        </Form>
         <div>
-          <h4>Potřebujete poradit?</h4>
-          <p>stačí nám zavolat na linku: 158</p>
+          <h4 className='contact-question'>Potřebujete poradit?</h4>
+          <p className='contact-text'>
+            Jsme tu pro Vás! Stačí nám zavolat na linku:
+            <span className='contact-phone'> 158</span>
+          </p>
         </div>
-      </section>
-    </Container>
+      </Container>
+    </div>
   );
 };

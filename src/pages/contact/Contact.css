@@ -1,0 +1,26 @@
+.contact-form-body {
+  background-color: #e7ecff;
+  padding-top: 20px;
+  padding-bottom: 50px;
+}
+
+.form-container {
+  max-width: 800px;
+  background-color: white;
+  border-radius: 24px;
+
+  padding: 20px 30px;
+}
+
+.contact-question {
+  color: var(--heading-color);
+}
+
+.contact-text {
+  color: var(--text-color);
+}
+
+.contact-phone {
+  color: var(--heading-color);
+  font-weight: 700;
+}

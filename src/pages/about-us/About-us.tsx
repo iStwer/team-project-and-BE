@@ -1,10 +1,9 @@
 import { Container } from 'react-bootstrap';
 
-
 export const Aboutus = () => {
   return (
     <>
-      <Container>
+      <Container className='mt-5'>
         <h1>O nás</h1>
         <p>
           Fyzioterapeutická klinika PhysioReact se specializuje na komplexní
