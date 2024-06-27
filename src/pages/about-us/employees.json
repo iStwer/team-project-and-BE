@@ -34,5 +34,14 @@
     "freeTime": "Eva miluje jógu a pravidelně navštěvuje různé workshopy. Kromě toho ráda cestuje a objevuje nové kultury a kuchyně.",
     "others": "Eva využívá moderní technologie k úlevě od bolesti a urychlení hojení. Má bohaté zkušenosti s léčbou zánětlivých stavů a svalových spasmů.",
     "alt": "Eva Novotná profile picture"
-  }
+  },
+  {
+    "id": 4,
+    "name": "Bc. Petra Svobodová",
+    "specialization": "Rehabilitace po operacích a úrazech",
+    "education": "Bakalářské studium fyzioterapie na Masarykově univerzitě",
+    "freeTime": "Petra je nadšená běžkyně a pravidelně se účastní maratonů. Ráda také čte detektivky a tráví čas se svou rodinou na chalupě.",
+    "others": "Petra se zaměřuje na komplexní rehabilitaci a pomáhá pacientům vrátit se k normálnímu životu po úrazech a chirurgických zákrocích.",
+    "alt": "Petra Svobodová profile picture"
+  },
 ]
