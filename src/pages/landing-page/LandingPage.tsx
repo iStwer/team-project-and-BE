@@ -45,7 +45,7 @@ export const LandingPage = () => {
         </div>
       </section>
 
-      <section className='faq-section'>
+      <section className='faq-section' id="faq">
         <h2 className='how-to-main-heading'>FAQ</h2>
         <Row>
           <Col xs={12} md={8} id='FAQ'>
