@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react';
-import { Container } from 'react-bootstrap';
+import { Container, Row } from 'react-bootstrap';
 import ServiceCard from './ServiceCard';
 import servicesData from '../../assets/services.json'; // import JSON souboru
+import './Services.css';
 
 interface Service {
   id: number;
@@ -18,7 +19,7 @@ export const Services = () => {
   }, []);
 
   return (
-    <Container className='mt-5'>
+    <Container className='mt-5 services-container'>
       <h1>Naše služby</h1>
       <p>
         Jsme tady proto, abychom vám pomohli dosáhnout optimální pohyblivosti a
@@ -27,15 +28,15 @@ export const Services = () => {
         klienta.
       </p>
 
-      <div className='service-list'>
-        {services.map(service => (
+      <Row className='service-list'>
+        {services.map((service) => (
           <ServiceCard
             key={service.id}
             title={service.name}
             description={service.description}
           />
         ))}
-      </div>
+      </Row>
     </Container>
   );
 };

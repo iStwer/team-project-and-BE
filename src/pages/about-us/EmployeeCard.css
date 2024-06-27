@@ -1,0 +1,34 @@
+img {
+  max-width: 90%;
+  border-radius: 50%;
+  margin-bottom: 20px;
+}
+
+.employee-name {
+  font-weight: 700;
+  color: var(--heading-color);
+  margin-top: 30px;
+  margin-bottom: 20px;
+}
+
+@media (max-width: 600px) {
+  img {
+    max-width: 70%;
+  }
+  .employee-name {
+    text-align: center;
+  }
+}
+
+@media (max-width: 400px) {
+  img {
+    max-width: 50%;
+  }
+  .employee-name {
+    text-align: center;
+  }
+}
+
+.employee-table {
+  margin-bottom: 40px;
+}

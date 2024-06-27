@@ -1,4 +1,4 @@
-import { Container, Button, Form } from 'react-bootstrap';
+import { Container, Button, Form, Table } from 'react-bootstrap';
 import { useState, useEffect, ChangeEvent, FormEvent } from 'react';
 import './Contact.css';
 
@@ -61,14 +61,36 @@ export const Contact = () => {
           <div className='infoMessage'>Formulář byl úspěšně odeslán!</div>
         )}
         <h1>Kontaktujte nás</h1>
-        <div>
-          <p>Adresa: {contactDetails.address}</p>
-          <p>Telefon: {contactDetails.phone}</p>
-          <p>E-mail: {contactDetails.email}</p>
-          <p>Otevírací doba: {contactDetails.openingHours}</p>
-        </div>
-        <h1>Napište nám</h1>
-        <Form onSubmit={handleSubmit} className='mt-5'>
+        <Table className='mt-4'>
+          <tbody>
+            <tr>
+              <td>
+                <strong>Adresa</strong>
+              </td>{' '}
+              <td>{contactDetails.address}</td>
+            </tr>
+            <tr>
+              <td>
+                <strong>Telefon</strong>
+              </td>{' '}
+              <td>{contactDetails.phone}</td>
+            </tr>
+            <tr>
+              <td>
+                <strong>E-mail</strong>
+              </td>{' '}
+              <td>{contactDetails.email}</td>
+            </tr>
+            <tr>
+              <td>
+                <strong>Otevírací doba</strong>{' '}
+              </td>
+              <td>{contactDetails.openingHours}</td>
+            </tr>
+          </tbody>
+        </Table>
+        <h1 className='mt-4'>Napište nám</h1>
+        <Form onSubmit={handleSubmit} className='mt-4'>
           <Form.Group className='mb-3'>
             <Form.Label htmlFor='contact-name'>Jméno</Form.Label>
             <Form.Control
