@@ -45,26 +45,6 @@ export const LandingPage = () => {
         </div>
       </section>
 
-      <section className='faq-section' id='faq'>
-        <h2 className='how-to-main-heading'>FAQ</h2>
-        <Row>
-          <Col xs={12} md={8} id='FAQ'>
-            {faqs.map((faq) => (
-              <FaqCard key={faq.id} faq={faq} />
-            ))}
-          </Col>
-          <Col className='contact-us-section'>
-            <h3 className='contact-us-heading'>Máte otázku?</h3>
-            <p className='contact-us-text'>Vyplňte kontaktní formulář</p>
-            <Link to='/contact'>
-              <Button className='action-btn contact-us-btn'>
-                Kontaktujte nás
-              </Button>
-            </Link>
-          </Col>
-        </Row>
-      </section>
-
       <section className='how-to-section'>
         <h2 className='how-to-main-heading'>Jak to u nás funguje?</h2>
         <div>
@@ -116,6 +96,26 @@ export const LandingPage = () => {
         <Link to='/bookingform'>
           <Button className='action-btn booking-btn-sm'>Objednat se</Button>
         </Link>
+      </section>
+
+      <section className='faq-section' id='faq'>
+        <h2 className='how-to-main-heading'>FAQ</h2>
+        <Row>
+          <Col xs={12} md={8} id='FAQ'>
+            {faqs.map((faq) => (
+              <FaqCard key={faq.id} faq={faq} />
+            ))}
+          </Col>
+          <Col className='contact-us-section'>
+            <h3 className='contact-us-heading'>Máte otázku?</h3>
+            <p className='contact-us-text'>Vyplňte kontaktní formulář</p>
+            <Link to='/contact'>
+              <Button className='action-btn contact-us-btn'>
+                Kontaktujte nás
+              </Button>
+            </Link>
+          </Col>
+        </Row>
       </section>
 
       <section className='client-section'>
