@@ -38,13 +38,21 @@ export const BookingForm = () => {
       [name]: value,
     }));
   };
+  
 
   const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
-    //e.preventDefault();
+    e.preventDefault();
+
+    const selectedDateTime = new Date(inputData.date + 'T' + inputData.time + ':00');
+    const currentDateTime = new Date();
+
+    // Kontrola, zda vybrané datum a čas jsou v budoucnosti
+    if (selectedDateTime <= currentDateTime) {
+      return; // Pokud je vybraný čas menší nebo roven aktuálnímu času, nebudeme formulář odesílat
+    }
+
     localStorage.setItem('formSubmitted', 'true');
     setFormSubmitted(true);
-    console.log(inputData);
-    console.log('form submitted');
     setInputData({
       name: '',
       surname: '',
@@ -54,6 +62,25 @@ export const BookingForm = () => {
       date: '',
       time: '',
     });
+  };
+
+  const generateHoursOptions = () => {
+    const currentHour = d.getHours();
+    const availableHours = [
+      '09:00', '10:00', '11:00', '12:00', 
+      '13:00', '14:00', '15:00', '16:00', 
+      '17:00', '18:00'
+    ];
+    if (inputData.date === today) {
+      return availableHours.filter(hour => parseInt(hour.substr(0, 2)) > currentHour);
+    }
+    
+    return availableHours;
+  };
+
+  const isDateDisabled = () => {
+    const currentHour = d.getHours();
+    return inputData.date === today && currentHour >= 18; // Disable today if current hour is 18 or later
   };
 
   useEffect(() => {
@@ -166,14 +193,24 @@ export const BookingForm = () => {
         <Form.Group className='mb-3'>
           <Form.Label htmlFor='time'>Vyberte čas návštěvy:</Form.Label>
           <Form.Control
-            type='time'
+            as='select'
             id='time'
             name='time'
+            step = '1800'
             min='09:00'
-            max='18:00'
+            max='17:30'
             onChange={handleChange}
             required
-          />
+          >
+          <option value='' disabled selected hidden>
+          Vyberte čas návštěvy
+        </option>
+        {generateHoursOptions().map((hour) => (
+              <option key={hour} value={hour}>
+                {hour}
+              </option>
+            ))}
+        </Form.Control>
         </Form.Group>
 
         <Button type='submit' className='action-btn mt-3 mb-5'>
