@@ -1,7 +1,6 @@
 import { Container } from 'react-bootstrap';
 import { EmployeeCard } from './EmployeeCard';
-import employees from './employees.json';
-import { ImagesList } from './ImagesList';
+import { employees } from './Employees';
 
 export const Aboutus = () => {
   return (
@@ -33,10 +32,7 @@ export const Aboutus = () => {
         </p>
       </Container>
       {employees.map((employee) => (
-        <EmployeeCard key={employee.id} employee={employee} />
-      ))}
-      {ImagesList.map((image) => (
-        <img key={image.id} src={image.src} alt={image.alt} />
+        <EmployeeCard key={employee.id} employees={employee} />
       ))}
     </>
   );
