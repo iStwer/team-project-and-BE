@@ -8,6 +8,13 @@ interface FormInputData {
   message: string;
 }
 
+const contactDetails = {
+  address: 'Národní technická knihovna, Technická 2710/6, 160 80 Praha 6' ,
+  phone: '158',
+  email: '4reactotrokyne@physioreact.achjo',
+  openingHours: 'Pondělí - Pátek, 8:00 - 18:00',
+};
+
 export const Contact = () => {
   const [inputData, setInputData] = useState<FormInputData>({
     name: '',
@@ -29,14 +36,21 @@ export const Contact = () => {
   };
 
   return (
+
     <div className='contact-form-body'>
       <Container className='mt-5 form-container'>
+          <h1>Kontaktujte nás</h1>
+      <div>
+        <p>Adresa: {contactDetails.address}</p>
+        <p>Telefon: {contactDetails.phone}</p>
+        <p>E-mail: {contactDetails.email}</p>
+        <p>Otevírací doba: {contactDetails.openingHours}</p>
+      </div>
         <h1>Napište nám</h1>
         <Form onSubmit={handleSubmit} className='mt-5'>
           <Form.Group className='mb-3'>
             <Form.Label htmlFor='contact-name'>Jméno</Form.Label>
-            <Form.Control
-              type='text'
+            <Form.Control  type='text'
               name='name'
               id='contact-name'
               placeholder='Vaše jméno'

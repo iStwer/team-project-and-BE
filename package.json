@@ -45,5 +45,8 @@
   "devDependencies": {
     "@types/react-bootstrap": "^0.32.36",
     "typescript": "^5.5.2"
+  },
+  "overrides": {
+    "typescript": "^5.5.2"
   }
 }
