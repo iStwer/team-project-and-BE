@@ -1,6 +1,6 @@
 import { Container, Form, Button } from 'react-bootstrap';
 import './BookingForm.css';
-import services from './services.json';
+import services from '../../assets/services.json';
 import { FormEvent, ChangeEvent, useState, useEffect } from 'react';
 
 interface FormInputData {
