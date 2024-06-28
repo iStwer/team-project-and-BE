@@ -39,3 +39,7 @@ td {
   background-color: var(--action-color);
   color: var(--heading-color);
 }
+
+.appointment-price {
+  text-align: right;
+}

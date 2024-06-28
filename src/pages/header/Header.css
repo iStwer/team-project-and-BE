@@ -8,6 +8,10 @@
   line-height: 31.25px;
 }
 
+.navbar-brand:visited {
+  color: var(--heading-color);
+}
+
 .navlinks {
   font-size: 18px;
   font-weight: 500;
