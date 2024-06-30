@@ -11,4 +11,32 @@
   font-size: 16px;
   font-weight: 500;
   line-height: 22px;
+  margin: 0 10px;
+  text-decoration: none;
+}
+
+.footer-link:hover {
+  color: var(--heading-color) !important;
+}
+
+.footer-links {
+  flex-wrap: wrap;
+}
+
+.footer-brand {
+  text-align: left;
+}
+
+@media (max-width: 991.98px) {
+  .footer-link {
+    margin: 5px 10px;
+  }
+
+  .footer-links {
+    justify-content: center !important;
+  }
+
+  .footer-brand {
+    text-align: center !important;
+  }
 }

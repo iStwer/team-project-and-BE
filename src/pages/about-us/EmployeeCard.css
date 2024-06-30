@@ -1,7 +1,7 @@
-img {
-  max-width: 90%;
+.employee-pic {
   border-radius: 50%;
   margin-bottom: 20px;
+  max-width: 100%;
 }
 
 .employee-name {
@@ -11,21 +11,27 @@ img {
   margin-bottom: 20px;
 }
 
-@media (max-width: 600px) {
-  img {
-    max-width: 70%;
-  }
-  .employee-name {
-    text-align: center;
+@media (max-width: 1199.98px) {
+  .employee-pic {
+    max-width: 90%;
   }
 }
 
-@media (max-width: 400px) {
-  img {
+@media (max-width: 991.98px) {
+  .employee-pic {
+    max-width: 90%;
+    margin-top: 30px;
+  }
+}
+
+@media (max-width: 767.98px) {
+  .employee-pic {
     max-width: 50%;
+    margin-top: 45px;
   }
   .employee-name {
     text-align: center;
+    margin-bottom: 0px;
   }
 }
 

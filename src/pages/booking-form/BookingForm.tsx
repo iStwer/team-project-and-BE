@@ -1,4 +1,4 @@
-import { Container, Form, Button } from 'react-bootstrap';
+import { Container, Form, Button, Modal } from 'react-bootstrap';
 import './BookingForm.css';
 import services from '../../assets/services.json';
 import { FormEvent, ChangeEvent, useState, useEffect } from 'react';
@@ -31,6 +31,8 @@ export const BookingForm = () => {
     time: '',
   });
 
+  const [showModal, setShowModal] = useState(false);
+
   const [formSubmitted, setFormSubmitted] = useState<boolean>(false);
 
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
@@ -58,7 +60,8 @@ export const BookingForm = () => {
         'http://localhost:3001/bookings',
         inputData,
       );
-      console.log('Booking submitted', response.data); //
+      console.log('Booking submitted', response.data);
+      setShowModal(true); //
       localStorage.setItem('formSubmitted', 'true');
       setFormSubmitted(true);
       setInputData({
@@ -132,9 +135,24 @@ export const BookingForm = () => {
 
   return (
     <Container className='mt-5 form-container'>
+      {/*Potvrzení nahoře na stránce po odeslání rezervace */}
       {localStorage.getItem('formSubmitted') && (
-        <div className='infoMessage'>Formulář byl úspěšně odeslán!</div>
+        <div className='info-message'>Formulář byl úspěšně odeslán!</div>
       )}
+
+      {/*Modal - vyskakovací okýnko, zobrazí se po odeslání rezervace přes obsah stránky*/}
+      <Modal show={showModal} onHide={() => setShowModal(false)}>
+        <Modal.Header closeButton>
+          <Modal.Title>Rezervace potvrzena</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>Budeme se těšit na Vaši návštěvu!</Modal.Body>
+        <Modal.Footer>
+          <Button variant='secondary' onClick={() => setShowModal(false)}>
+            Zavřít
+          </Button>
+        </Modal.Footer>
+      </Modal>
+
       <h1>Objednat se</h1>
 
       {/*<form action='https://formsubmit.co/physioreact@seznam.cz' method='POST'></form>*/}

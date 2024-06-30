@@ -27,7 +27,7 @@ export const EmployeeCard = ({ employee }: { employee: Employee }) => {
           <img
             src={profilePics[employee.id]}
             alt={employee.alt}
-            className=' d-block mx-auto'
+            className=' employee-pic d-block mx-auto'
           ></img>
         </Col>
         <Col>

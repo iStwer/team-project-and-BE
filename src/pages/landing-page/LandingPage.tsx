@@ -5,8 +5,21 @@ import reviews from './reviews.json';
 import faqs from './faqs.json';
 import './LandingPage.css';
 import { Button, Container, Col, Row } from 'react-bootstrap';
+import { useLocation } from 'react-router-dom';
+import { useEffect } from 'react';
 
 export const LandingPage = () => {
+  const location = useLocation();
+
+  useEffect(() => {
+    if (location.state?.scrollToFAQ) {
+      const faqSection = document.getElementById('faq');
+      if (faqSection) {
+        faqSection.scrollIntoView({ behavior: 'smooth' });
+      }
+    }
+  }, [location]);
+
   return (
     <Container>
       <section className='first-section'>
@@ -34,7 +47,7 @@ export const LandingPage = () => {
           abychom vám pomohli dosáhnout optimálního zdraví a pohybové kondice.
         </article>
         <div className='section2-buttons'>
-          <Link to='/services'>
+          <Link className='services-btn-link' to='/services'>
             <Button className='action-btn services-btn'>Naše služby</Button>
           </Link>
           <Link to='/aboutus'>
@@ -93,13 +106,13 @@ export const LandingPage = () => {
             </div>
           </div>
         </div>
-        <Link to='/bookingform'>
+        <Link className='booking-btn-sm-link' to='/bookingform'>
           <Button className='action-btn booking-btn-sm'>Objednat se</Button>
         </Link>
       </section>
 
       <section className='faq-section' id='faq'>
-        <h2 className='how-to-main-heading'>FAQ</h2>
+        <h2 className='how-to-main-heading faq-heading'>FAQ</h2>
         <Row>
           <Col xs={12} md={8} id='FAQ'>
             {faqs.map((faq) => (

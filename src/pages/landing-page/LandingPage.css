@@ -20,12 +20,6 @@
   padding-top: 80px;
 }
 
-@media (max-width: 768px) {
-  .logo {
-    font-size: 56px;
-  }
-}
-
 .slogan {
   font-size: 22px;
   font-weight: 500;
@@ -234,4 +228,41 @@
   font-size: 16px;
   font-style: 500;
   line-height: 22px;
+}
+
+@media (max-width: 767.98px) {
+  .contact-us-section {
+    text-align: center;
+    margin-left: 0;
+    margin-top: 70px;
+  }
+  .faq-section {
+    padding-top: 20px;
+  }
+  .booking-btn-sm {
+    display: block;
+    margin: 0 auto;
+  }
+  .services-btn-link {
+    text-decoration: none;
+  }
+
+  .services-btn {
+    display: block;
+    margin: 0 auto;
+  }
+  .booking-btn-sm-link {
+    text-decoration: none;
+  }
+  .faq-heading,
+  .how-to-main-heading {
+    text-align: center;
+  }
+  .about-us-btn {
+    margin-left: 0px;
+    margin-top: 20px;
+  }
+  .logo {
+    font-size: 56px;
+  }
 }

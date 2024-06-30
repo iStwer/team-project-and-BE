@@ -12,15 +12,15 @@ export const Prices = () => {
             <tbody>
               <tr>
                 <td>Vstupní vyšetření</td>
-                <td>1 000 Kč</td>
+                <td className='appointment-price'>1 000 Kč</td>
               </tr>
               <tr>
                 <td>Kontrolní vyšetření - 30 minut</td>
-                <td>590 Kč</td>
+                <td className='appointment-price'>590 Kč</td>
               </tr>
               <tr>
                 <td>Kontrolní vyšetření - 45 minut</td>
-                <td>890 Kč</td>
+                <td className='appointment-price'>890 Kč</td>
               </tr>
             </tbody>
           </Table>
