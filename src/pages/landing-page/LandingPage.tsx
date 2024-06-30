@@ -5,8 +5,21 @@ import reviews from './reviews.json';
 import faqs from './faqs.json';
 import './LandingPage.css';
 import { Button, Container, Col, Row } from 'react-bootstrap';
+import { useLocation } from 'react-router-dom';
+import { useEffect } from 'react';
 
 export const LandingPage = () => {
+  const location = useLocation();
+
+  useEffect(() => {
+    if (location.state?.scrollToFAQ) {
+      const faqSection = document.getElementById('faq');
+      if (faqSection) {
+        faqSection.scrollIntoView({ behavior: 'smooth' });
+      }
+    }
+  }, [location]);
+
   return (
     <Container>
       <section className='first-section'>

@@ -1,8 +1,16 @@
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { Container, Row, Col } from 'react-bootstrap';
 import './Footer.css';
 
 export const Footer = () => {
+
+  const navigate = useNavigate();
+
+  const handleFAQClick = (e: React.MouseEvent<HTMLAnchorElement, MouseEvent>) => {
+    e.preventDefault();
+    navigate('/', { state: { scrollToFAQ: true } });
+  };
+
   return (
     <footer className='footer'>
       <Container>
@@ -26,7 +34,7 @@ export const Footer = () => {
               <Link to='/gdpr' className='footer-link'>
                 Zpracování osobních údajů
               </Link>
-              <Link to='#faq' className='footer-link'>
+              <Link to='#faq' className='footer-link' onClick={handleFAQClick}>
                 Q&A
               </Link>
               <Link to='/contact' className='footer-link'>
