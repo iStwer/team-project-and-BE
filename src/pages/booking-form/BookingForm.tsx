@@ -5,7 +5,7 @@ import { FormEvent, ChangeEvent, useState, useEffect } from 'react';
 import axios from 'axios';
 
 interface FormInputData {
-  id: number;
+  id: number | undefined;
   name: string;
   surname: string;
   email: string;
@@ -21,7 +21,7 @@ export const BookingForm = () => {
   const maxDate = d.getFullYear() + 1 + '-01-01';
 
   const [inputData, setInputData] = useState<FormInputData>({
-    id: 0,
+    id: undefined,
     name: '',
     surname: '',
     email: '',
@@ -31,82 +31,146 @@ export const BookingForm = () => {
     time: '',
   });
 
-  const [showModal, setShowModal] = useState(false);
-
+  const [checkedInputData, setCheckedInputData] =
+    useState<FormInputData | null>(null);
+  const [telephoneError, setTelephoneError] = useState<boolean>(false);
+  const [emailError, setEmailError] = useState<boolean>(false);
   const [formSubmitted, setFormSubmitted] = useState<boolean>(false);
+  const [showModal, setShowModal] = useState<boolean>(false);
+  //const [availabilityError, setAvailabilityError] = useState<string>('');
+  const [availableHours, setAvailableHours] = useState([
+    '09:00',
+    '10:00',
+    '11:00',
+    '12:00',
+    '13:00',
+    '14:00',
+    '15:00',
+    '16:00',
+    '17:00',
+    '18:00',
+  ]);
 
+  //INPUT FIELD CHANGE HANDLING
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
-    console.log(name, value);
-    setInputData((prevData) => ({
-      ...prevData,
-      [name]: value,
-    }));
+    setInputData((prevData) => ({ ...prevData, [name]: value }));
   };
 
+  //FORM SUBMIT HANDLING
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    const selectedDateTime = new Date(
-      inputData.date + 'T' + inputData.time + ':00',
-    );
-    const currentDateTime = new Date();
+    await checkAvailabilityAndSubmit();
+  };
 
-    // Kontrola, zda vybrané datum a čas jsou v budoucnosti
-    if (selectedDateTime <= currentDateTime) {
-      return; // Pokud je vybraný čas menší nebo roven aktuálnímu času, nebudeme formulář odesílat
-    }
+  //EMAIL VALIDITY CHECK
+  const isValidEmail = (email: string) => {
+    // Define a regular expression pattern for email validation.
+    const pattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return pattern.test(email);
+  };
+
+  //FETCHING LATEST ID + SETTING NEW ID + PHONE AND EMAIL VALIDITY CHECK
+  const checkAvailabilityAndSubmit = async () => {
     try {
-      const response = await axios.post(
-        'http://localhost:3001/bookings',
-        inputData,
+      const response = await fetch('http://localhost:3001/bookings').then(
+        (res) => res.json(),
       );
-      console.log('Booking submitted', response.data);
-      setShowModal(true); //
-      localStorage.setItem('formSubmitted', 'true');
-      setFormSubmitted(true);
-      setInputData({
-        id: 0,
-        name: '',
-        surname: '',
-        email: '',
-        telephone: '',
-        service: '',
-        date: '',
-        time: '',
-      });
+
+      let checkedTelephone = inputData.telephone.trim().replace(/\s+/g, '');
+      console.log('phone length: ', checkedTelephone.length);
+      let checkedEmail = isValidEmail(inputData.email.trim());
+      console.log('email', checkedEmail);
+
+      if (isNaN(parseInt(checkedTelephone)) || checkedTelephone.length > 9) {
+        setTelephoneError(true);
+        setEmailError(false);
+      } else if (!checkedEmail) {
+        setEmailError(true);
+        setTelephoneError(false);
+      } else {
+        const formattedData = {
+          id: response[response.length - 1].id + 1,
+          name: inputData.name.trim(),
+          surname: inputData.surname.trim(),
+          email: inputData.email.trim(),
+          telephone: checkedTelephone,
+          service: inputData.service.trim(),
+          date: inputData.date.trim(),
+          time: inputData.time.trim(),
+        };
+
+        setTelephoneError(false);
+        setEmailError(false);
+        setCheckedInputData(formattedData);
+
+        /* const generateHoursOptions = () => {
+          const currentHour = d.getHours();
+          const availableHours = [
+            '09:00',
+            '10:00',
+            '11:00',
+            '12:00',
+            '13:00',
+            '14:00',
+            '15:00',
+            '16:00',
+            '17:00',
+            '18:00',
+          ];
+          if (inputData.date === today) {
+            return availableHours.filter(
+              (hour) => parseInt(hour.substr(0, 2)) > currentHour,
+            );
+          }
+
+          return availableHours; 
+        };*/
+      }
     } catch (err) {
       console.error(err);
     }
   };
 
-  const generateHoursOptions = () => {
-    const currentHour = d.getHours();
-    const availableHours = [
-      '09:00',
-      '10:00',
-      '11:00',
-      '12:00',
-      '13:00',
-      '14:00',
-      '15:00',
-      '16:00',
-      '17:00',
-      '18:00',
-    ];
-    if (inputData.date === today) {
-      return availableHours.filter(
-        (hour) => parseInt(hour.substr(0, 2)) > currentHour,
-      );
+  //NEW BOOKING POST AFTER NEW ID and DATA CHECK
+  useEffect(() => {
+    if (checkedInputData) {
+      const postNewBooking = async () => {
+        try {
+          if (checkedInputData) {
+            const response = await axios.post(
+              'http://localhost:3001/bookings',
+              checkedInputData,
+            );
+            console.log('Booking submitted', response.data);
+            localStorage.setItem('formSubmitted', 'true');
+            setShowModal(true);
+            setFormSubmitted(true);
+          }
+        } catch (err) {
+          console.error(err);
+        } finally {
+          setCheckedInputData(null);
+          setInputData({
+            id: undefined,
+            name: '',
+            surname: '',
+            email: '',
+            telephone: '',
+            service: '',
+            date: '',
+            time: '',
+          });
+          setTelephoneError(false);
+          setEmailError(false);
+        }
+      };
+
+      postNewBooking();
     }
+  }, [checkedInputData]);
 
-    return availableHours;
-  };
-
-  const isDateDisabled = () => {
-    const currentHour = d.getHours();
-    return inputData.date === today && currentHour >= 18; // Disable today if current hour is 18 or later
-  };
-
+  //SUCCESSFUL FORM SUBMISSION MODAL
   useEffect(() => {
     if (localStorage.getItem('formSubmitted') === 'true') {
       setFormSubmitted(true);
@@ -116,22 +180,6 @@ export const BookingForm = () => {
       }, 5000);
     }
   }, []);
-
-  //server endpoint check
-  const fetchBookings = async () => {
-    try {
-      const response = await fetch('http://localhost:3001/bookings').then(
-        (res) => res.json(),
-      );
-      console.log(response);
-    } catch (err) {
-      console.error(err);
-    }
-  };
-
-  useEffect(() => {
-    fetchBookings();
-  }, [formSubmitted]);
 
   return (
     <Container className='mt-5 form-container'>
@@ -154,8 +202,6 @@ export const BookingForm = () => {
       </Modal>
 
       <h1>Objednat se</h1>
-
-      {/*<form action='https://formsubmit.co/physioreact@seznam.cz' method='POST'></form>*/}
 
       <Form className='mt-5' onSubmit={handleSubmit}>
         <Form.Group className='mb-3'>
@@ -192,6 +238,14 @@ export const BookingForm = () => {
             onChange={handleChange}
             required
           />
+
+          {emailError && (
+            <Form.Text>
+              Zadejte platný e-mail!
+              <br />
+            </Form.Text>
+          )}
+
           <Form.Text className='text-muted'>
             Váš e-mail nebudeme s nikým sdílet.
           </Form.Text>
@@ -207,6 +261,14 @@ export const BookingForm = () => {
             onChange={handleChange}
             required
           />
+
+          {telephoneError && (
+            <Form.Text>
+              Zadejte platné telefonní číslo! (pouze číslice, bez předvolby)
+              <br />
+            </Form.Text>
+          )}
+
           <Form.Text className='text-muted'>
             Vaše telefonní číslo nebudeme s nikým sdílet.
           </Form.Text>
@@ -252,15 +314,13 @@ export const BookingForm = () => {
             id='time'
             name='time'
             step='1800'
-            min='09:00'
-            max='17:30'
             onChange={handleChange}
             required
           >
             <option value='' disabled selected hidden>
               Vyberte čas návštěvy
             </option>
-            {generateHoursOptions().map((hour) => (
+            {availableHours.map((hour) => (
               <option key={hour} value={hour}>
                 {hour}
               </option>
