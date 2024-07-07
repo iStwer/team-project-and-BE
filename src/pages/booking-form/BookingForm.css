@@ -22,3 +22,30 @@
   margin: 0 auto 30px auto;
   border-radius: 4px;
 }
+
+/* Targeting the DatePicker's input field */
+.react-datepicker__input-container input {
+  border-radius: 4px; /* Rounded borders */
+  padding: 8px; /* Padding inside the input */
+}
+
+/* Customizing the calendar appearance */
+.react-datepicker {
+  border: 1px solid #1e0e62; /* Blue border around the calendar */
+  border-radius: 4px; /* Rounded corners */
+  padding: 10px; /* Padding inside the calendar */
+  margin-bottom: 20px;
+  font-family: DM Sans, sans-serif; /* Font for the calendar */
+  color: #1e0e62; /* Text color for the calendar */
+}
+
+/* Customizing specific days */
+.react-datepicker__day--selected {
+  background-color: #1e0e62; /* Blue background for selected day */
+}
+
+.react-datepicker__header {
+  background-color: #e7ecff; /* Change to your desired color */
+  border-bottom: 1px solid #aaaaaa; /* Optional: adds a border line under the header */
+  color: #ffffff; /* Change text color if needed */
+}
