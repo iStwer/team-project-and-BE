@@ -27,8 +27,18 @@ export const Prices = () => {
               </tr>
             </tbody>
           </Table>
-          <p className='mt-4 mb-5'>
+          <p className='prices-payment'>
           Platba je možná v hotovosti nebo kartou.</p>
+          </Col>
+          <Col className=' pricelist-question-box'>
+          <p className=' pricelist-question'>
+            Chcete se poradit ohledně vašeho problému, nebo se nechat objednat?
+          </p>
+          <Link to='/bookingform'>
+            <Button className='action-btn'>Objednat se online</Button>
+          </Link>
+        </Col>
+          
           <p>
           <h4 className='prices-name'>Vstupní vyšetření</h4>
 Vstupní vyšetření je klíčovým krokem pro pochopení vašeho zdravotního stavu a stanovení terapeutického plánu. Naši zkušení fyzioterapeuti kombinují diagnostické metody s manuálním vyšetřením, aby vám poskytli personalizovanou péči.
@@ -39,18 +49,11 @@ Vstupní vyšetření je klíčovým krokem pro pochopení vašeho zdravotního 
 
 Pro naše klienty zajišťujeme profesionální péči s důrazem na osobní přístup a odbornost našich fyzioterapeutů. Pokud máte zájem o rezervaci nebo potřebujete více informací o našich službách, neváhejte nás kontaktovat. Jsme tu, abychom vám pomohli dosáhnout vašich zdravotních cílů a zlepšit váš celkový pohybový komfort.
           </p>
-          <p>
+          <p className='mb-5'>
           Pro více informací o našich službách a rezervaci se obraťte na náš tým fyzioterapeutů, kteří se zaměřují na osobní přístup a profesionální péči.
           </p>
-        </Col>
-        <Col className=' pricelist-question-box'>
-          <p className=' pricelist-question'>
-            Chcete se poradit ohledně vašeho problému, nebo se nechat objednat?
-          </p>
-          <Link to='/bookingform'>
-            <Button className='action-btn'>Objednat se online</Button>
-          </Link>
-        </Col>
+        
+
       </Row>
     </Container>
   );

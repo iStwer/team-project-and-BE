@@ -24,6 +24,7 @@ td {
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  border-radius: 12px;
 }
 
 .action-btn {
@@ -49,4 +50,8 @@ td {
   color: var(--heading-color);
   margin-top: 30px;
   margin-bottom: 20px;
+}
+
+.prices-payment {
+  color: #aaa;
 }
