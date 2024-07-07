@@ -21,7 +21,7 @@ export const Services = () => {
   return (
     <Container className='mt-5 services-container'>
       <h1>Naše služby</h1>
-      <p>
+      <p className='mt-4'>
         Jsme tady proto, abychom vám pomohli dosáhnout optimální pohyblivosti a
         pohodlí ve vašem životě. Nabízíme širokou škálu specializovaných služeb,
         které jsou navrženy tak, aby vyhověly individuálním potřebám každého

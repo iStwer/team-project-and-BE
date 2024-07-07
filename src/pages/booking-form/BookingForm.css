@@ -50,11 +50,21 @@
   color: #ffffff; /* Change text color if needed */
 }
 
-.duration-button {
-  font-size: 16px;
-  padding: 10px 20px;
+.custom-duration-button {
+  background-color: #ffffff; /* Change to your preferred background color */
+  color: #a1a1b0; /* Text color */
+  border-color: #a1a1b0; /* Border color */
 }
 
-.duration-button.me-2 {
-  margin-right: 10px;
+.custom-duration-button:focus,
+.custom-duration-button:active,
+.custom-duration-button:hover,
+.custom-duration-button
+.custom-duration-button.selected {
+  background-color: #1e0e62; /* Change to your preferred active background color */
+  color: #ffffff; /* Active text color */
+  border-color: #1e0e62; /* Active border color */
 }
+
+
+

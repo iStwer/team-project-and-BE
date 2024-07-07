@@ -43,3 +43,10 @@ td {
 .appointment-price {
   text-align: right;
 }
+
+.prices-name {
+  font-weight: 700;
+  color: var(--heading-color);
+  margin-top: 30px;
+  margin-bottom: 20px;
+}

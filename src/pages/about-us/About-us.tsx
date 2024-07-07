@@ -17,7 +17,7 @@ export const Aboutus = () => {
     <>
       <Container className='mt-5'>
         <h1>O nás</h1>
-        <p>
+        <p className='mt-4'>
           Fyzioterapeutická klinika PhysioReact se specializuje na komplexní
           rehabilitaci a péči o pohybový aparát. Naše multidisciplinární tým
           tvoří vysoce kvalifikovaní fyzioterapeuti s dlouholetou praxí, kteří
