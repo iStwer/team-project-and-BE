@@ -18,6 +18,7 @@ interface FormInputData {
   service: string;
   date: string;
   time: string;
+  duration?: string;
 }
 
 export const BookingForm = () => {
@@ -34,11 +35,13 @@ export const BookingForm = () => {
     service: '',
     date: '',
     time: '',
+    duration: '',
   });
 
   const [checkedInputData, setCheckedInputData] = useState<FormInputData | null>(null);
   const [telephoneError, setTelephoneError] = useState<boolean>(false);
   const [emailError, setEmailError] = useState<boolean>(false);
+  const [durationError, setDurationError] = useState<boolean>(false);
   const [formSubmitted, setFormSubmitted] = useState<boolean>(false);
   const [showModal, setShowModal] = useState<boolean>(false);
   const [availableHours, setAvailableHours] = useState([
@@ -67,11 +70,18 @@ export const BookingForm = () => {
 
   const handleDurationSelection = (duration: number) => {
     setSelectedDuration(duration === selectedDuration ? null : duration);
+    setInputData((prevData) => ({ ...prevData, duration: duration.toString() }));
+    setDurationError(false);
   };
 
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    if (!selectedDuration) {
+      setDurationError(true);
+      return;
+    }
     await checkAvailabilityAndSubmit();
+    
   };
 
   const isValidEmail = (email: string) => {
@@ -101,6 +111,7 @@ export const BookingForm = () => {
           service: inputData.service.trim(),
           date: inputData.date.trim(),
           time: inputData.time.trim(),
+          duration: selectedDuration === 30 ? '30 min' : '60 min',
         };
 
         setTelephoneError(false);
@@ -136,6 +147,7 @@ export const BookingForm = () => {
             service: '',
             date: '',
             time: '',
+            duration: '',
           });
           setTelephoneError(false);
           setEmailError(false);
@@ -256,26 +268,28 @@ export const BookingForm = () => {
           </Form.Control>
         </Form.Group>
 
-        <Row className='mb-3 form-label'>
-          <Col>
+        <Form.Group className='mb-3'>
+          <Form.Label>Vyberte délku trvání:</Form.Label>
+          <div>
             <Button
-              variant={selectedDuration === 30 ? 'primary' : 'outline-primary'}
               onClick={() => handleDurationSelection(30)}
-              className='mb-3'
+              className={`custom-duration-button me-2 ${selectedDuration === 30 ? 'selected' : ''}`}
+              value = {inputData.duration} 
             >
               30 min
             </Button>
-          </Col>
-          <Col>
             <Button
-              variant={selectedDuration === 60 ? 'primary' : 'outline-primary'}
+               className={`custom-duration-button me-2 ${selectedDuration === 60 ? 'selected' : ''}`}
               onClick={() => handleDurationSelection(60)}
-              className='mb-3'
+              value = {inputData.duration}
             >
               60 min
             </Button>
-          </Col>
-        </Row>
+          </div>
+          {durationError && (
+            <Form.Text className='text-muted'>Vyberte délku trvání!<br /></Form.Text>
+          )}
+        </Form.Group>
 
         <Form.Group className='mb-3'>
           <Form.Label htmlFor='date'>Vyberte termín:</Form.Label>
@@ -290,6 +304,7 @@ export const BookingForm = () => {
             id='date'
             name='date'
             locale='cs'
+            value = {inputData.date}
             required
           />
         
@@ -301,7 +316,6 @@ export const BookingForm = () => {
             as='select'
             id='time'
             name='time'
-            step='1800'
             value={inputData.time}
             onChange={handleChange}
             required
