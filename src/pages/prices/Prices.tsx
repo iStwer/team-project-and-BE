@@ -19,7 +19,7 @@ export const Prices = () => {
                 <td className='appointment-price'>590 Kč</td>
               </tr>
               <tr>
-                <td>Kontrolní vyšetření - 45 minut</td>
+                <td>Kontrolní vyšetření - 60 minut</td>
                 <td className='appointment-price'>890 Kč</td>
               </tr>
             </tbody>

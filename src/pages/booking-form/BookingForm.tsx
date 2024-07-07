@@ -1,7 +1,5 @@
-// File path: src/components/BookingForm.tsx
-
 import React, { FormEvent, ChangeEvent, useState, useEffect } from 'react';
-import { Container, Form, Button, Modal, FormControl } from 'react-bootstrap';
+import { Container, Form, Button, Modal, FormControl, Row, Col } from 'react-bootstrap';
 import "react-datepicker/dist/react-datepicker.css";
 import './BookingForm.css';
 import services from '../../assets/services.json';
@@ -10,7 +8,6 @@ import DatePicker, { registerLocale } from 'react-datepicker';
 import { cs } from 'date-fns/locale'; // Import Czech locale for Monday as the first day
 
 registerLocale('cs', cs);
-
 
 interface FormInputData {
   id: number | undefined;
@@ -45,10 +42,11 @@ export const BookingForm = () => {
   const [formSubmitted, setFormSubmitted] = useState<boolean>(false);
   const [showModal, setShowModal] = useState<boolean>(false);
   const [availableHours, setAvailableHours] = useState([
-    '09:00', '10:00', '11:00', '12:00', '13:00', '14:00', '15:00', '16:00', '17:00',
+    '09:00','09:30', '10:00', '10:30', '11:00', '11:30', '12:00', '12:30', '13:00', '13:30', '14:00', '14:30', '15:00', '15:30', '16:00', '16:30', '17:00', '17:30',
   ]);
 
   const [startDate, setStartDate] = useState<Date | null>(new Date());
+  const [selectedDuration, setSelectedDuration] = useState<number | null>(null); // null, 30 or 60
 
   const handleDateChange = (date: Date | null) => {
     setStartDate(date);
@@ -65,6 +63,10 @@ export const BookingForm = () => {
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
     setInputData((prevData) => ({ ...prevData, [name]: value }));
+  };
+
+  const handleDurationSelection = (duration: number) => {
+    setSelectedDuration(duration === selectedDuration ? null : duration);
   };
 
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
@@ -180,6 +182,7 @@ export const BookingForm = () => {
             placeholder='Křestní jméno'
             id='name'
             name='name'
+            value={inputData.name}
             onChange={handleChange}
             required
           />
@@ -192,6 +195,7 @@ export const BookingForm = () => {
             placeholder='Příjmení'
             id='surname'
             name='surname'
+            value={inputData.surname}
             onChange={handleChange}
             required
           />
@@ -204,6 +208,7 @@ export const BookingForm = () => {
             placeholder='E-mailová adresa'
             id='email'
             name='email'
+            value={inputData.email}
             onChange={handleChange}
             required
           />
@@ -222,6 +227,7 @@ export const BookingForm = () => {
             placeholder='Telefonní číslo'
             id='telephone'
             name='telephone'
+            value={inputData.telephone}
             onChange={handleChange}
             required
           />
@@ -239,15 +245,37 @@ export const BookingForm = () => {
             as='select'
             id='sluzby'
             name='service'
+            value={inputData.service}
             onChange={handleChange}
             required
           >
-            <option value='' disabled selected hidden>--vyberte službu--</option>
+            <option value='' disabled hidden>--vyberte službu--</option>
             {services.map((service) => (
               <option key={service.id} value={service.name}>{service.name}</option>
             ))}
           </Form.Control>
         </Form.Group>
+
+        <Row className='mb-3 form-label'>
+          <Col>
+            <Button
+              variant={selectedDuration === 30 ? 'primary' : 'outline-primary'}
+              onClick={() => handleDurationSelection(30)}
+              className='mb-3'
+            >
+              30 min
+            </Button>
+          </Col>
+          <Col>
+            <Button
+              variant={selectedDuration === 60 ? 'primary' : 'outline-primary'}
+              onClick={() => handleDurationSelection(60)}
+              className='mb-3'
+            >
+              60 min
+            </Button>
+          </Col>
+        </Row>
 
         <Form.Group className='mb-3'>
           <Form.Label htmlFor='date'>Vyberte termín:</Form.Label>
@@ -274,10 +302,11 @@ export const BookingForm = () => {
             id='time'
             name='time'
             step='1800'
+            value={inputData.time}
             onChange={handleChange}
             required
           >
-            <option value='' disabled selected hidden>Vyberte čas návštěvy</option>
+            <option value='' disabled hidden>Vyberte čas návštěvy</option>
             {availableHours.map((hour) => (
               <option key={hour} value={hour}>{hour}</option>
             ))}
