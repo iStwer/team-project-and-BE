@@ -258,7 +258,7 @@ export const BookingForm = () => {
             onChange={handleDateChange as any}
             filterDate={isWeekday}
             minDate={new Date()}
-            dateFormat="yyyy-MM-dd"
+            dateFormat="dd-MM-yyyy"
             id='date'
             name='date'
             locale='cs'
