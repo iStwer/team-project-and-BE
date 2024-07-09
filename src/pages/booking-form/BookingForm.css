@@ -66,5 +66,11 @@
   border-color: #1e0e62; /* Active border color */
 }
 
+.custom-duration-button:disabled {
+  background-color: #f0f0f0; /* Disabled background color */
+  color: #a1a1b0; /* Disabled text color */
+  border-color: #a1a1b0; /* Disabled border color */
+}
+
 
 

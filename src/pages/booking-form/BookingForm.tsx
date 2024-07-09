@@ -50,6 +50,8 @@ export const BookingForm = () => {
 
   const [startDate, setStartDate] = useState<Date | null>(new Date());
   const [selectedDuration, setSelectedDuration] = useState<number | null>(null); // null, 30 or 60
+  const [isEntranceExam, setIsEntranceExam] = useState<boolean>(false); // Track if service is "Vstupní vyšetření"
+
 
   const handleDateChange = (date: Date | null) => {
     setStartDate(date);
@@ -66,10 +68,33 @@ export const BookingForm = () => {
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
     setInputData((prevData) => ({ ...prevData, [name]: value }));
+    if (value === 'Vstupní vyšetření') {
+      setIsEntranceExam(true);
+      setSelectedDuration(60); // Force duration to 60 min for Entrance examination
+      setInputData((prevData) => ({ ...prevData, duration: '60' }));
+    } else {
+      setIsEntranceExam(false);
+    }
   };
 
   const handleDurationSelection = (duration: number) => {
+    if (isEntranceExam && duration !== 60) {
+      return;
+    }
     setSelectedDuration(duration === selectedDuration ? null : duration);
+     // If 60 min duration is selected, adjust available hours to only hourly slots
+     if (duration === 60) {
+      setAvailableHours([
+        '09:00', '10:00', '11:00', '12:00', '13:00', '14:00', '15:00', '16:00', '17:00',
+      ]);
+    } else {
+      // Otherwise, reset available hours to default
+      setAvailableHours([
+        '09:00','09:30', '10:00', '10:30', '11:00', '11:30', '12:00', 
+        '12:30', '13:00', '13:30', '14:00', '14:30', '15:00', '15:30', 
+        '16:00', '16:30', '17:00', '17:30',
+      ]);
+    }
     setInputData((prevData) => ({ ...prevData, duration: duration.toString() }));
     setDurationError(false);
   };
@@ -275,6 +300,7 @@ export const BookingForm = () => {
               onClick={() => handleDurationSelection(30)}
               className={`custom-duration-button me-2 ${selectedDuration === 30 ? 'selected' : ''}`}
               value = {inputData.duration} 
+              disabled={isEntranceExam} // Disable 30 min if Entrance examination selected
             >
               30 min
             </Button>
