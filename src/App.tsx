@@ -16,13 +16,13 @@ function App() {
       <Header />
       <div className='app-content'>
         <Routes>
-          <Route path='/' element={<LandingPage />} />
-          <Route path='/aboutus' element={<Aboutus />} />
-          <Route path='/prices' element={<Prices />} />
-          <Route path='/services' element={<Services />} />
-          <Route path='/contact' element={<Contact />} />
-          <Route path='/bookingform' element={<BookingForm />} />
-          <Route path='/gdpr' element={<Gdpr />} />
+          <Route path='/team-project' element={<LandingPage />} />
+          <Route path='/team-project/aboutus' element={<Aboutus />} />
+          <Route path='/team-project/prices' element={<Prices />} />
+          <Route path='/team-project/services' element={<Services />} />
+          <Route path='/team-project/contact' element={<Contact />} />
+          <Route path='/team-project/bookingform' element={<BookingForm />} />
+          <Route path='/team-project/gdpr' element={<Gdpr />} />
         </Routes>
       </div>
       <Footer />

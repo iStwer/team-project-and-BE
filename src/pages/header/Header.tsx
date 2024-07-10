@@ -8,22 +8,46 @@ export const Header = () => {
       <Navbar expand='lg' className='bg-body-teriary' fixed='top'>
         <Container>
           <Navbar.Brand>
-            <Link className='navbar-brand ' to='/' id='logo'>
+            <Link className='navbar-brand ' to='/team-project' id='logo'>
               PhysioReact
             </Link>
           </Navbar.Brand>
           <Navbar.Toggle aria-controls='basic-navbar-nav' />
           <Navbar.Collapse id='basic-navbar-nav'>
             <Nav className='me-auto justify-content-center flex-grow-1 pe-5 navlinks'>
-              <Nav.Link href='/services'>Naše služby</Nav.Link>
-              <Nav.Link href='/aboutus'>O nás</Nav.Link>
-              <Nav.Link href='/prices'>Ceník</Nav.Link>
-              <Nav.Link href='/contact'>Kontakt</Nav.Link>
+              <Link
+                to='/team-project/services'
+                style={{ textDecoration: 'none' }}
+              >
+                Naše služby
+              </Link>
+              <Link
+                to='/team-project/aboutus'
+                style={{ textDecoration: 'none' }}
+              >
+                O nás
+              </Link>
+              <Link
+                to='/team-project/prices'
+                style={{ textDecoration: 'none' }}
+              >
+                Ceník
+              </Link>
+
+              <Link
+                to='/team-project/contact'
+                style={{ textDecoration: 'none' }}
+              >
+                Kontakt
+              </Link>
             </Nav>
             <Nav>
-              <Nav.Link href='/bookingform' className='bookingform-btn'>
-                Objednat se
-              </Nav.Link>
+              <Link
+                to='/team-project/bookingform'
+                style={{ textDecoration: 'none' }}
+              >
+                <div className='bookingform-btn'>Objednat se</div>
+              </Link>
             </Nav>
           </Navbar.Collapse>
         </Container>

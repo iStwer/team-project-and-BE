@@ -26,13 +26,13 @@ export const LandingPage = () => {
         <h1 className='logo'>PhysioReact</h1>
         <p className='slogan'>když už tělo nemůže, PhysioReact pomůže</p>
         <div className='section1-buttons'>
-          <Link to='/bookingform'>
+          <Link to='/team-project/bookingform'>
             <Button className='action-btn booking-btn-lg'>
               Objednat termín
             </Button>
           </Link>
           <div>
-            <Link to='/aboutus'>
+            <Link to='/team-project/aboutus'>
               <Button variant='link' className='learn-more-link'>
                 Zjistit více
               </Button>
@@ -47,10 +47,10 @@ export const LandingPage = () => {
           abychom vám pomohli dosáhnout optimálního zdraví a pohybové kondice.
         </article>
         <div className='section2-buttons'>
-          <Link className='services-btn-link' to='/services'>
+          <Link className='services-btn-link' to='/team-project/services'>
             <Button className='action-btn services-btn'>Naše služby</Button>
           </Link>
-          <Link to='/aboutus'>
+          <Link to='/team-project/aboutus'>
             <Button variant='outline-primary' className='about-us-btn'>
               O nás
             </Button>
@@ -106,7 +106,7 @@ export const LandingPage = () => {
             </div>
           </div>
         </div>
-        <Link className='booking-btn-sm-link' to='/bookingform'>
+        <Link className='booking-btn-sm-link' to='/team-project/bookingform'>
           <Button className='action-btn booking-btn-sm'>Objednat se</Button>
         </Link>
       </section>
@@ -122,7 +122,7 @@ export const LandingPage = () => {
           <Col className='contact-us-section'>
             <h3 className='contact-us-heading'>Máte otázku?</h3>
             <p className='contact-us-text'>Vyplňte kontaktní formulář</p>
-            <Link to='/contact'>
+            <Link to='/team-project/contact'>
               <Button className='action-btn contact-us-btn'>
                 Kontaktujte nás
               </Button>
