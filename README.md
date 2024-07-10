@@ -14,7 +14,7 @@ PhysioReact is a modern Single Page Application (SPA) designed for a physiothera
 - React
 - TypeScript
 - Bootstrap
-- [https://github.com/typicode/json-server/tree/v0](JSON server)
+- JSON server - [https://github.com/typicode/json-server/tree/v0]
 
 ## Project Setup
 
