@@ -1,14 +1,12 @@
-using Microsoft.Extensions.Options;
-using MongoDB.Driver;
-
 var builder = WebApplication.CreateBuilder(args);
 
-// Add services to the container.
+// Configure services
 builder.Services.Configure<DatabaseSettings>(
     builder.Configuration.GetSection(nameof(DatabaseSettings)));
 
 builder.Services.AddSingleton<MongoDbService>();
 
+// Add services to the container
 builder.Services.AddControllers();
 builder.Services.AddCors(options =>
 {
@@ -23,7 +21,6 @@ builder.Services.AddSwaggerGen();
 
 var app = builder.Build();
 
-// Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();

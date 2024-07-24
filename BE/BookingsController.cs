@@ -15,9 +15,10 @@ public class BookingsController : ControllerBase
     public async Task<IActionResult> Get() => Ok(await _mongoDbService.GetBookingsAsync());
 
     [HttpPost]
-    public async Task<IActionResult> Post([FromBody] Booking booking)
-    {
-        await _mongoDbService.CreateBookingAsync(booking);
-        return CreatedAtAction(nameof(Get), new { id = booking.Id }, booking);
-    }
+public async Task<IActionResult> Post([FromBody] Booking newBooking)
+{
+    await _mongoDbService.CreateBookingAsync(newBooking);
+    return CreatedAtAction(nameof(Get), new { id = newBooking.Id }, newBooking);
+}
+
 }

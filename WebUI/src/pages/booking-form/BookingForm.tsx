@@ -10,7 +10,7 @@ import { cs } from 'date-fns/locale'; // Import Czech locale for Monday as the f
 registerLocale('cs', cs);
 
 interface FormInputData {
-  id: number | undefined;
+  id: string | undefined;
   name: string;
   surname: string;
   email: string;
