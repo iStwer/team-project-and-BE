@@ -20,5 +20,4 @@ public class BookingsController : ControllerBase
         await _mongoDbService.CreateBookingAsync(booking);
         return CreatedAtAction(nameof(Get), new { id = booking.Id }, booking);
     }
-
 }

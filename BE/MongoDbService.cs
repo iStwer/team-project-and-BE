@@ -17,5 +17,4 @@ public class MongoDbService
     public async Task<Booking> GetBookingByIdAsync(string id) => await _bookings.Find(x => x.Id == id).FirstOrDefaultAsync();
 
     public async Task CreateBookingAsync(Booking newBooking) => await _bookings.InsertOneAsync(newBooking);
-
 }
