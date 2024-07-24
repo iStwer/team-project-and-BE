@@ -1,0 +1,6 @@
+@PhysiotherapyBookingAPI_HostAddress = http://localhost:5012
+
+GET {{PhysiotherapyBookingAPI_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
