@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("PhysiotherapyBookingAPI")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+b44e15c9ca8140b5f6dce7cb4d0abee5a6b22e5c")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+f913931292d1af6f27795e5aa965609af2a9098e")]
 [assembly: System.Reflection.AssemblyProductAttribute("PhysiotherapyBookingAPI")]
 [assembly: System.Reflection.AssemblyTitleAttribute("PhysiotherapyBookingAPI")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

@@ -8873,11 +8873,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\davit.simonjan\\Desktop\\team-project-and-BE\\PhysiotherapyBookingAPI\\PhysiotherapyBookingAPI.csproj",
+      "projectUniqueName": "c:\\Users\\davit.simonjan\\Desktop\\team-project-and-BE\\PhysiotherapyBookingAPI\\PhysiotherapyBookingAPI.csproj",
       "projectName": "PhysiotherapyBookingAPI",
-      "projectPath": "C:\\Users\\davit.simonjan\\Desktop\\team-project-and-BE\\PhysiotherapyBookingAPI\\PhysiotherapyBookingAPI.csproj",
+      "projectPath": "c:\\Users\\davit.simonjan\\Desktop\\team-project-and-BE\\PhysiotherapyBookingAPI\\PhysiotherapyBookingAPI.csproj",
       "packagesPath": "C:\\Users\\davit.simonjan\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\davit.simonjan\\Desktop\\team-project-and-BE\\PhysiotherapyBookingAPI\\obj\\",
+      "outputPath": "c:\\Users\\davit.simonjan\\Desktop\\team-project-and-BE\\PhysiotherapyBookingAPI\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
